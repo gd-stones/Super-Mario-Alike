@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyTakeDamage()
     {
-        StartCoroutine(TriggerDeactiveAfterDelay(2f));
+        StartCoroutine(TriggerDeactiveAfterDelay(1f));
         anim.SetTrigger(nameConditionHurt);
     }
 
