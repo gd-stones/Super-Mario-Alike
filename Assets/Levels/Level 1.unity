@@ -178,6 +178,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &13584935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13584923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889c5200ffa95cf42a3defc8d11ba239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameConditionHurt: mushroom_Hurt
 --- !u!1 &193193131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
@@ -199,6 +212,19 @@ MonoBehaviour:
   speed: 1
   idleDuration: 1.5
   condition: radish_Run
+--- !u!114 &193193141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193193131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a049a74cb62fc694295e628b1e6d6c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &244628424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2301,19 @@ MonoBehaviour:
   speed: 1.5
   idleDuration: 1
   condition: blue_Bird_Fly
+--- !u!114 &879142787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879142774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a049a74cb62fc694295e628b1e6d6c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &906560925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
@@ -2296,6 +2335,19 @@ MonoBehaviour:
   speed: 1
   idleDuration: 1.5
   condition: snail_Walk
+--- !u!114 &906560935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906560925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a049a74cb62fc694295e628b1e6d6c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &1247416817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,7 +3044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920517378188713774, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.72
+      value: -7.971
       objectReference: {fileID: 0}
     - target: {fileID: 920517378188713774, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3370,11 +3422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2
+      value: -11.33
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.521378
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3411,6 +3463,10 @@ PrefabInstance:
     - target: {fileID: 6120223939690263206, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120223939690263208, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}

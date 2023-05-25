@@ -25,12 +25,35 @@ public class EnemyDamage : MonoBehaviour
     //        gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage);
     //    }
     //}
+    private float enemyHeadCoordinateY;
+    private float playerFootCoordinateY;
+    private BoxCollider2D boxCollider;
+
+    private void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+        enemyHeadCoordinateY = transform.position.y + boxCollider.size.y;
+    }
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            playerFootCoordinateY = collision.gameObject.GetComponent<Transform>().position.y;
+
+            print("enemyHead " + enemyHeadCoordinateY);
+            print("playerFoot " + playerFootCoordinateY);
+
+
+            if (playerFootCoordinateY > enemyHeadCoordinateY)
+            {
+                gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
+            }
+            else
+            {
+                collision.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            }
         }
     }
 }

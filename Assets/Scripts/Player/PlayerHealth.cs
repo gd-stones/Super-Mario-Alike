@@ -62,7 +62,6 @@ public class PlayerHealth : MonoBehaviour
                     {
                         component.enabled = false;
                     }
-                    print("currentHealth = 0");
 
                     anim.SetBool("isGrounded", true);
                     StartCoroutine(TriggerDeactiveAfterDelay(2.5f));
