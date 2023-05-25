@@ -4,12 +4,12 @@ public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private AudioClip checkpointSound; //sound that we will play when picking up a new checkpoint
     private Transform currentCheckpoint; //we will store our last checkpoint here
-    //private Health playerHealth;
+    private PlayerHealth playerHealth;
     //private UIManager uiManager;
 
     private void Awake()
     {
-        //playerHealth = GetComponent<Health>();
+        playerHealth = GetComponent<PlayerHealth>();
         //uiManager = FindObjectOfType<UIManager>();
     }
 
