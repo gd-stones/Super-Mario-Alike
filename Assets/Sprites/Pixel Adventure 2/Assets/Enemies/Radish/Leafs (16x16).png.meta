@@ -53,7 +53,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,43 +135,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Leafs_0
+      name: Leafs (16x16)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3
+        y: 4
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d3785d727e2b3c4f935d1f7daaf3b8c
-      internalID: 1438261671223416474
+      spriteID: 6dfb313709ce3244a9e1bf217ba8535d
+      internalID: -1025181237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Leafs_1
+      name: Leafs (16x16)_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 20
+        y: 4
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5b2ec545bc7de940a80b20fd611ce27
-      internalID: 4748074554828775505
+      spriteID: 34d76742e8c62ce4096751da65e038b6
+      internalID: 1641086295
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Leafs_0: 1438261671223416474
-      Leafs_1: 4748074554828775505
+      Leafs (16x16)_0: -1025181237
+      Leafs (16x16)_1: 1641086295
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
