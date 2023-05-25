@@ -1,18 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioClip checkpointSound; //sound that we will play when picking up a new checkpoint
+    private Transform currentCheckpoint; //we will store our last checkpoint here
+    //private Health playerHealth;
+    //private UIManager uiManager;
+
+    private void Awake()
     {
-        
+        //playerHealth = GetComponent<Health>();
+        //uiManager = FindObjectOfType<UIManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        //if (gameObject.GetComponent<Health>().currentHealth <= 0)
+        //{
+        //    CheckRespawn();
+        //}
+    }
+
+    public void CheckRespawn()
+    {
+        //check is check point available
+        if (currentCheckpoint == null)
+        {
+            // show game over screen
+            //uiManager.GameOver();
+
+            return; //don't execute the rest of this function
+        }
+
+        transform.position = currentCheckpoint.position; // move player to checkpoint position
+        //playerHealth.Respawn(); //restore player health and reset animation
+
+        //move camera to checkpoint room
+        //Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
+    }
+
+    //activate checkpoints
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Checkpoint")
+        {
+            currentCheckpoint = collision.transform; //store the checkpoint that we activated as the current one
+            //SoundManager.instance.PlaySound(checkpointSound);
+            collision.GetComponent<Collider2D>().enabled = false; //deactivate checkpoint collider
+            collision.GetComponent<Animator>().SetTrigger("appear"); //trigger checkpoint animation
+        }
     }
 }

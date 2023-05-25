@@ -316,9 +316,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 210
-        y: 1
-        width: 89
-        height: 36
+        y: 4
+        width: 30
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -333,7 +333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (30x38)_8
+      name: Run (30x38)_10
       rect:
         serializedVersion: 2
         x: 300
@@ -354,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (30x38)_9
+      name: Run (30x38)_11
       rect:
         serializedVersion: 2
         x: 330
@@ -374,6 +374,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Run (30x38)_8
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 4
+        width: 29
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c548bdef294fa488eed1d38ac6ac1e
+      internalID: -1891938448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run (30x38)_9
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1
+        width: 29
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c7738e424a9a9941b0feeee45d99e83
+      internalID: 607785821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -387,14 +429,16 @@ TextureImporter:
     nameFileIdTable:
       Run (30x38)_0: 6862589947206935886
       Run (30x38)_1: -4806876609090179506
-      Run (30x38)_2: 3475330468002371909
-      Run (30x38)_3: -4935097123573261609
-      Run (30x38)_4: 8773759722943985335
-      Run (30x38)_5: -4319633767813207490
-      Run (30x38)_6: 1616764020290406248
-      Run (30x38)_7: 2071339888612671085
-      Run (30x38)_8: -2037493608682628564
-      Run (30x38)_9: 4400657028225920104
+      Run (30x38)_10: -2037493608682628564
+      Run (30x38)_11: 4400657028225920104
+      Run (30x38)_2: -4935097123573261609
+      Run (30x38)_3: 8773759722943985335
+      Run (30x38)_4: -4319633767813207490
+      Run (30x38)_5: 1616764020290406248
+      Run (30x38)_6: 2071339888612671085
+      Run (30x38)_7: -2037493608682628564
+      Run (30x38)_8: -1891938448
+      Run (30x38)_9: 607785821
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
