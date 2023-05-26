@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] private string nameConditionHurt;
+    [SerializeField] private float delayTimeDeactive;
 
     private void Start()
     {
@@ -14,8 +14,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyTakeDamage()
     {
-        StartCoroutine(TriggerDeactiveAfterDelay(1f));
         anim.SetTrigger(nameConditionHurt);
+        StartCoroutine(TriggerDeactiveAfterDelay(delayTimeDeactive));
     }
 
     private IEnumerator TriggerDeactiveAfterDelay(float delay)
