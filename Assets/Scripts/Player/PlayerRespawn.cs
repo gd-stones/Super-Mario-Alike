@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerRespawn : MonoBehaviour
 {
@@ -15,39 +17,54 @@ public class PlayerRespawn : MonoBehaviour
 
     private void Update()
     {
-        //if (gameObject.GetComponent<Health>().currentHealth <= 0)
-        //{
-        //    CheckRespawn();
-        //}
+        if (gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
+        {
+            CheckRespawn();
+        }
     }
 
     public void CheckRespawn()
     {
-        //check is check point available
-        if (currentCheckpoint == null)
+        if (currentCheckpoint == null) //check is check point available
         {
-            // show game over screen
-            //uiManager.GameOver();
-
+            //uiManager.GameOver(); // show game over screen
             return; //don't execute the rest of this function
         }
 
         transform.position = currentCheckpoint.position; // move player to checkpoint position
-        //playerHealth.Respawn(); //restore player health and reset animation
-
-        //move camera to checkpoint room
-        //Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
+        playerHealth.Respawn(); //restore player health and reset animation
     }
 
-    //activate checkpoints
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //activate checkpoints
     {
         if (collision.transform.tag == "Checkpoint")
         {
             currentCheckpoint = collision.transform; //store the checkpoint that we activated as the current one
             //SoundManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Collider2D>().enabled = false; //deactivate checkpoint collider
-            collision.GetComponent<Animator>().SetTrigger("appear"); //trigger checkpoint animation
+            collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear"); //trigger checkpoint animation
         }
+        else if(collision.transform.tag == "Start")
+        {
+            collision.GetComponent<Animator>().SetTrigger("start_Appear");
+        }
+        else if (collision.transform.tag == "End")
+        {
+            collision.GetComponent<Animator>().SetTrigger("end_Appear");
+            StartCoroutine(LoadSceneWithDelay(1.25f));
+        }
+    }
+
+    private IEnumerator LoadSceneWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        string sceneNumberString = currentSceneName.Substring(currentSceneName.Length - 1);
+        int sceneNumber = int.Parse(sceneNumberString);
+        int nextSceneNumber = sceneNumber + 1;
+        string nextSceneName = currentSceneName.Substring(0, currentSceneName.Length - 1) + nextSceneNumber.ToString();
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }

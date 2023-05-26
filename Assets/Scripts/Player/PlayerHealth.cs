@@ -44,18 +44,15 @@ public class PlayerHealth : MonoBehaviour
 
             if (currentHealth > 0)
             {
-                //player hurt
                 anim.SetTrigger("hurt");
 
                 //iframes
                 StartCoroutine(Invunerability());
-
                 SoundManager.instance.PlaySound(hurtSound);
             }
             else
             {
-                //player dead
-                if (!dead)
+                if (!dead) //player dead
                 {
                     //deactivate all attached component classes
                     foreach (Behaviour component in components)
@@ -64,7 +61,6 @@ public class PlayerHealth : MonoBehaviour
                     }
 
                     anim.SetBool("isGrounded", true);
-                    StartCoroutine(TriggerDeactiveAfterDelay(2.5f));
                     anim.SetTrigger("hurt");
 
                     dead = true;
@@ -79,20 +75,20 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 
-    //public void Respawn()
-    //{
-    //    dead = false;
-    //    AddHealth(startingHealth);
-    //    anim.ResetTrigger("hurt");
-    //    anim.Play("Idle");
-    //    StartCoroutine(Invunerability());
+    public void Respawn()
+    {
+        dead = false;
+        AddHealth(startingHealth);
+        anim.ResetTrigger("hurt");
+        anim.Play("Idle");
+        StartCoroutine(Invunerability());
 
-    //    //Activate all attached component classes
-    //    foreach (Behaviour component in components)
-    //    {
-    //        component.enabled = true;
-    //    }
-    //}
+        //Activate all attached component classes
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
+    }
 
     private IEnumerator Invunerability()
     {
@@ -102,7 +98,7 @@ public class PlayerHealth : MonoBehaviour
         //invunerability duration
         for (int i = 0; i < numberOfFlashes; i++)
         {
-            spriteRend.color = new Color(1, 0, 0, 0.5f);
+            spriteRend.color = new Color(0.5f, 0.2f, 0.5f, 0.5f);
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes));
             spriteRend.color = Color.white;
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes));
@@ -110,11 +106,5 @@ public class PlayerHealth : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(10, 11, false);
         invulnerable = false;
-    }
-
-    private IEnumerator TriggerDeactiveAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        gameObject.SetActive(false);
     }
 }

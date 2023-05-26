@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 1218128661197468493}
   - component: {fileID: 1218128661197468482}
   - component: {fileID: 879142778}
+  - component: {fileID: 879142782}
+  - component: {fileID: 879142787}
+  - component: {fileID: 879142792}
   m_Layer: 11
   m_Name: Enemy Blue Bird
   m_TagString: Untagged
@@ -117,7 +120,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.359375}
@@ -133,3 +136,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9375, y: 0.71875}
   m_EdgeRadius: 0
+--- !u!114 &879142782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218128661197468483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721ccfc203409e149a991be8f47e4c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDistance: 4
+  speed: 1.5
+  idleDuration: 1
+  condition: blue_Bird_Fly
+--- !u!114 &879142787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218128661197468483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a049a74cb62fc694295e628b1e6d6c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!114 &879142792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218128661197468483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889c5200ffa95cf42a3defc8d11ba239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameConditionHurt: blue_Bird_Hurt
+  delayTimeDeactive: 0.5

@@ -33,7 +33,7 @@ public class SnailDamage : MonoBehaviour
     {
         float distanceToMove = speed * Time.deltaTime;
         float elapsedTime = 0f;
-
+        
         while (elapsedTime < 5f)
         {
             objectToMove.transform.Translate(Vector3.right * distanceToMove);

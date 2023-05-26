@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SelectionsLevel : MonoBehaviour
 {
-    public int level; 
+    public int level;
 
     // Start is called before the first frame update
     void Start()
