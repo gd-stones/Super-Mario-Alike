@@ -7,12 +7,10 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private AudioClip checkpointSound; //sound that we will play when picking up a new checkpoint
     private Transform currentCheckpoint; //we will store our last checkpoint here
     private PlayerHealth playerHealth;
-    //private UIManager uiManager;
 
     private void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
-        //uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Update()
@@ -27,7 +25,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (currentCheckpoint == null) //check is check point available
         {
-            //uiManager.GameOver(); // show game over screen
+            SceneManager.LoadScene("Lose");
             return; //don't execute the rest of this function
         }
 
@@ -44,7 +42,7 @@ public class PlayerRespawn : MonoBehaviour
             collision.GetComponent<Collider2D>().enabled = false; //deactivate checkpoint collider
             collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear"); //trigger checkpoint animation
         }
-        else if(collision.transform.tag == "Start")
+        else if (collision.transform.tag == "Start")
         {
             collision.GetComponent<Animator>().SetTrigger("start_Appear");
         }

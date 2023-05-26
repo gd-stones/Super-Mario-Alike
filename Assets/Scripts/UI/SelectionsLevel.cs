@@ -10,7 +10,6 @@ public class SelectionsLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     public void OpenScene()

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 #endif
 
-        // Flip player when moving left-right https://youtu.be/Gf8LOFNnils?list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&t=277
+        //Flip player when moving left-right https://youtu.be/Gf8LOFNnils?list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&t=277
         if (horizontalInput > 0.01f)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
         //Set animator parameters
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("isGrounded", isGrounded());
-        //print (isGrounded());
 
         //Jump
         if (Input.GetKeyDown(KeyCode.Space))
