@@ -6,6 +6,8 @@ public class SnailDamage : MonoBehaviour
     [SerializeField] protected float damage;
     private float snailHeadCoordinateY;
     private float playerFootCoordinateY;
+    private float playerCoordinateX;
+    private float snailCoordinateX;
 
     private void Start()
     {
@@ -17,10 +19,16 @@ public class SnailDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerFootCoordinateY = collision.gameObject.GetComponent<Transform>().position.y;
+            playerCoordinateX = collision.gameObject.GetComponent<Transform>().position.x;
+            snailCoordinateX = gameObject.GetComponent<Transform>().position.x;
 
-            if (playerFootCoordinateY > snailHeadCoordinateY)
+            if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX <= snailCoordinateX)
             {
-                StartCoroutine(MoveObjectToRight(gameObject, 1f));
+                StartCoroutine(MoveObjectToDirection(gameObject, 1f, Vector3.right));
+            }
+            else if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX > snailCoordinateX)
+            {
+                StartCoroutine(MoveObjectToDirection(gameObject, 1f, Vector3.left));
             }
             else
             {
@@ -29,14 +37,14 @@ public class SnailDamage : MonoBehaviour
         }
     }
 
-    IEnumerator MoveObjectToRight(GameObject objectToMove, float speed)
+    IEnumerator MoveObjectToDirection(GameObject objectToMove, float speed, Vector3 direction)
     {
         float distanceToMove = speed * Time.deltaTime;
         float elapsedTime = 0f;
-        
+
         while (elapsedTime < 5f)
         {
-            objectToMove.transform.Translate(Vector3.right * distanceToMove);
+            objectToMove.transform.Translate(direction * distanceToMove);
             gameObject.GetComponent<EnemyPatrol>().enabled = false;
             gameObject.GetComponent<Animator>().SetTrigger("snail_Hurt");
 
@@ -44,6 +52,8 @@ public class SnailDamage : MonoBehaviour
             yield return null;
         }
 
-        objectToMove.SetActive(false);
+        gameObject.GetComponent<Animator>().SetBool("snail_Walk", true);
+        gameObject.GetComponent<EnemyPatrol>().enabled = true;
+        //objectToMove.SetActive(false);
     }
 }
