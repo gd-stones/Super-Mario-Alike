@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 6563114950593509031}
   - component: {fileID: 6563114950593509028}
   - component: {fileID: 6865456012971049604}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6563114950593509030
 Transform:
   m_ObjectHideFlags: 0

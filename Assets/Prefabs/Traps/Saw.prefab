@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 8008803049497400654}
   - component: {fileID: 8008803049497400655}
   - component: {fileID: 8008803049497400652}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8008803049497400649
 Transform:
   m_ObjectHideFlags: 0
