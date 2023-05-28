@@ -19,6 +19,10 @@ public class PlayerRespawn : MonoBehaviour
         {
             CheckRespawn();
         }
+        if (transform.position.y < -6)
+        {
+            SceneManager.LoadScene("Lose");
+        }
     }
 
     public void CheckRespawn()
