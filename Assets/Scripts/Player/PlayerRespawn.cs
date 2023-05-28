@@ -62,6 +62,12 @@ public class PlayerRespawn : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == "Level 10")
+        {
+            SceneManager.LoadScene("Win");
+            yield return null;
+        }
         string sceneNumberString = currentSceneName.Substring(currentSceneName.Length - 1);
         int sceneNumber = int.Parse(sceneNumberString);
         int nextSceneNumber = sceneNumber + 1;
