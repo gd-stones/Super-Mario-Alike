@@ -6,9 +6,9 @@ public class PlayerScale : MonoBehaviour
     [SerializeField] private AudioClip pickupSound;
     private Transform playerScale;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             SoundManager.instance.PlaySound(pickupSound);
             Vector3 scaleChange = new Vector3(scaleValue, scaleValue, scaleValue);
