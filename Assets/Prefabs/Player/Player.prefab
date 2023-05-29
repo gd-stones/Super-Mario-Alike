@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpPower: 10
+  jumpPower: 13
   coyoteTime: 0.25
   extraJumps: 1
   groundLayer:

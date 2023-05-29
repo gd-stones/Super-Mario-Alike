@@ -32,22 +32,16 @@ public class PlayerMovement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    public void ChangeDirection(float value)
-    {
-        horizontalInput = value;
-    }
-
-    public void ResetDirection()
-    {
-        horizontalInput = 0f;
-    }
-
     private void Update()
     {
 #if UNITY_EDITOR
         horizontalInput = Input.GetAxis("Horizontal");
 #endif
+        Movement();
+    }
 
+    private void Movement()
+    {
         //Flip player when moving left-right https://youtu.be/Gf8LOFNnils?list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&t=277
         if (horizontalInput > 0.01f)
         {
@@ -73,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
         }
-      
+
         body.gravityScale = 3;
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
@@ -106,14 +100,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (coyoteCounter > 0) //if not on the ground and coyote counter bigger than 0 do a normal jump
             {
-                anim.SetTrigger("doubleJump");
+                //anim.SetTrigger("doubleJump");
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
             }
             else
             {
                 if (jumpCounter > 0) //if we have extra jumps then jump and decrease the jump counter
                 {
-                    anim.SetTrigger("doubleJump");
+                    //anim.SetTrigger("doubleJump");
                     body.velocity = new Vector2(body.velocity.x, jumpPower);
                     jumpCounter--;
                 }
@@ -133,5 +127,15 @@ public class PlayerMovement : MonoBehaviour
     public bool canAttack()
     {
         return horizontalInput == 0 && isGrounded();
+    }
+
+    public void ChangeDirection(float value)
+    {
+        horizontalInput = value;
+    }
+
+    public void ResetDirection()
+    {
+        horizontalInput = 0f;
     }
 }
