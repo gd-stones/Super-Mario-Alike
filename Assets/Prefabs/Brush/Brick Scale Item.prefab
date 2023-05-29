@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3edef703b6b5c44b88134907fcfc15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleValue: 1.2
+  scaleValue: 1.5
   pickupSound: {fileID: 0}
 --- !u!1 &8469453552323655757
 GameObject:
@@ -160,9 +160,9 @@ GameObject:
   - component: {fileID: 8469453552323655756}
   - component: {fileID: 4437686047588594305}
   - component: {fileID: 3730546028839096301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick Scale Item
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1191053277, guid: f7472d29deaa7414abffd38318319096, type: 3}
+  m_Sprite: {fileID: 230080438, guid: 413986c4a668c374d8de72a47621b531, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -275,4 +275,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleCollectible: {fileID: 4847984750501928172}
   moveSpeed: 2
-  moveDuration: 5
+  moveDuration: 3
