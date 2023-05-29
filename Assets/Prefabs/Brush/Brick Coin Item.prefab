@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 4862116628783774173}
   - component: {fileID: 4847984750501928168}
   m_Layer: 0
-  m_Name: Scale Collectible
+  m_Name: Coin Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4847984750501928170
 Transform:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -133,7 +133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4847984750501928168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4437686047588594305}
   - component: {fileID: 3730546028839096301}
   m_Layer: 0
-  m_Name: Brick
+  m_Name: Brick Coin Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1191053277, guid: f7472d29deaa7414abffd38318319096, type: 3}
+  m_Sprite: {fileID: 674715919, guid: 48fd9917466ade44fa9bfd8326fab049, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,4 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4adc30c07968114ab52388dd9cffead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleCollectible: {fileID: 0}
+  scaleCollectible: {fileID: 4847984750501928172}
+  moveSpeed: 2
+  moveDuration: 5
