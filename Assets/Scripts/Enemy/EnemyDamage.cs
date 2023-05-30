@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyDamage : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class EnemyDamage : MonoBehaviour
 
             if (playerFootCoordinateY > enemyHeadCoordinateY)
             {
-                gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
                 gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
             }
             else
@@ -29,8 +30,32 @@ public class EnemyDamage : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Snail")
         {
-            gameObject.transform.Translate(Vector3.up * 40 * Time.deltaTime);
-            gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
+            StartCoroutine(MoveUpAndDown());
+            //gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
         }
+    }
+
+    private IEnumerator MoveUpAndDown()
+    {
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            gameObject.transform.Translate(Vector3.up * 3 * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            gameObject.transform.Translate(Vector3.down * 6 * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
     }
 }
