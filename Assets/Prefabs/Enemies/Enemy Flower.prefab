@@ -483,6 +483,8 @@ MonoBehaviour:
   firepoint: {fileID: 7874328928190344406}
   fireballs:
   - {fileID: 7874328927524319107}
+  - {fileID: 7874328929303015867}
+  - {fileID: 7874328928422085887}
   colliderDistance: -0.6
   boxCollider: {fileID: 7874328928887542701}
   playerLayer:
