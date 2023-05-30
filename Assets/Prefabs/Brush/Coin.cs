@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            totalCoin += 50;
+            DataManager.Instance.coin += 50;
             gameObject.SetActive(false);
         }
     }

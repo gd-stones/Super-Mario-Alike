@@ -21,12 +21,12 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (cooldownTimer >= attackCooldown && Coin.totalCoin >= 100)
+            if (cooldownTimer >= attackCooldown && DataManager.Instance.coin >= 100)
             {
                 //attack
                 cooldownTimer = 0;
                 Attack();
-                Coin.totalCoin -= 100;
+                DataManager.Instance.coin -= 100;
             }
         }
     }

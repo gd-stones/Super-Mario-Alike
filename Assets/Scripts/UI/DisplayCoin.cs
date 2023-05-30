@@ -7,11 +7,13 @@ public class DisplayCoin : MonoBehaviour
 
     private void Start()
     {
-        coinDisplay.text = Coin.totalCoin.ToString();
+        DataManager.Instance.LoadData();
+        coinDisplay.text = DataManager.Instance.coin.ToString();
     }
 
     private void Update()
     {
-        coinDisplay.text = Coin.totalCoin.ToString();
+        coinDisplay.text = DataManager.Instance.coin.ToString();
+        DataManager.Instance.WriteData();
     }
 }
