@@ -4,8 +4,6 @@ using System.IO;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance { get; private set; }
-
-    //Variables that need to be stored
     public int coin;
 
     private void Awake()
@@ -37,7 +35,7 @@ public class DataManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/coinmanager.json", json);
-        //Debug.Log("Application.persistentDataPath --- " + Application.persistentDataPath);
+        Debug.Log("Application.persistentDataPath --- " + Application.persistentDataPath);
     }
 
     public void LoadData()

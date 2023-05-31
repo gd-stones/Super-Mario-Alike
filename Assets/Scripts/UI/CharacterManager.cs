@@ -6,7 +6,8 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
-        character = GameObject.Find(SelectionCharacter.Instance.nameCharacter);
+        character = GameObject.Find(SelectionCharacter.Instance.nameCharacter.ToString());
+        print(SelectionCharacter.Instance.nameCharacter.ToString());
     }
 
     private void Update()

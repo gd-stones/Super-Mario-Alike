@@ -11,7 +11,7 @@ public class SnailDamage : MonoBehaviour
 
     private void Start()
     {
-        snailHeadCoordinateY = transform.position.y + 0.5f;
+        snailHeadCoordinateY = transform.position.y + 0.25f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

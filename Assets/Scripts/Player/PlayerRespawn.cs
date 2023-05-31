@@ -4,8 +4,8 @@ using System.Collections;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    [SerializeField] private AudioClip checkpointSound; //sound that we will play when picking up a new checkpoint
-    private Transform currentCheckpoint; //we will store our last checkpoint here
+    [SerializeField] private AudioClip checkpointSound;
+    private Transform currentCheckpoint; //Store last checkpoint
     private PlayerHealth playerHealth;
 
     private void Awake()
@@ -15,25 +15,22 @@ public class PlayerRespawn : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
+        if (gameObject.GetComponent<PlayerHealth>().currentHealth <= 0 || transform.position.y < -10)
         {
             CheckRespawn();
-        }
-        if (transform.position.y < -6)
-        {
-            SceneManager.LoadScene("Lose");
         }
     }
 
     public void CheckRespawn()
     {
-        if (currentCheckpoint == null) //check is check point available
+        if (currentCheckpoint == null) //Check is checkpoint available
         {
-            SceneManager.LoadScene("Lose");
-            return; //don't execute the rest of this function
+            //SceneManager.LoadScene("Lose");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            return;
         }
 
-        transform.position = currentCheckpoint.position; // move player to checkpoint position
+        transform.position = currentCheckpoint.position; //Move player to checkpoint position
         playerHealth.Respawn(); //restore player health and reset animation
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4847984750501928171}
   - component: {fileID: 4847984750501928169}
   - component: {fileID: 4862116628783774173}
-  - component: {fileID: 1835605426}
+  - component: {fileID: 2975222930987717643}
   m_Layer: 0
   m_Name: Coin Collectible
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1835605426
+--- !u!114 &2975222930987717643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,10 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4847984750501928172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4bdc1df7ccb9a41b6b10c6e3a20213, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fa989465c73b674bba90b9a560d9693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalCoin: 0
+  valueCoin: 50
 --- !u!1 &8469453552323655757
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,12 @@ public class PlayerScale : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             SoundManager.instance.PlaySound(pickupSound);
-            Vector3 scaleChange = new Vector3(scaleValue, scaleValue, scaleValue);
+            Vector3 scaleChange = new Vector3(scaleValue, scaleValue + 0.25f, scaleValue);
 
             playerScale = collision.gameObject.GetComponent<Transform>();
             playerScale.localScale = scaleChange;
 
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

@@ -40,9 +40,8 @@ public class PlayerMovement : MonoBehaviour
         Movement();
     }
 
-    private void Movement()
+    public void Movement()
     {
-        //Flip player when moving left-right https://youtu.be/Gf8LOFNnils?list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&t=277
         if (horizontalInput > 0.01f)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -52,11 +51,9 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
-        //Set animator parameters
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("isGrounded", isGrounded());
 
-        //Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -65,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         //Adjustable jump height
         if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
         {
-            body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
+            body.velocity = new Vector2(body.velocity.x, body.velocity.y / 3);
         }
 
         body.gravityScale = 3;
@@ -74,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded())
         {
             coyoteCounter = coyoteTime; //reset coyote counter when on the ground
-            jumpCounter = extraJumps; //reset jump counter to extra jump value 
+            jumpCounter = extraJumps; //reset jump counter to extra jump value
         }
         else
         {
@@ -96,23 +93,23 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
         }
-        else
-        {
-            if (coyoteCounter > 0) //if not on the ground and coyote counter bigger than 0 do a normal jump
-            {
-                //anim.SetTrigger("doubleJump");
-                body.velocity = new Vector2(body.velocity.x, jumpPower);
-            }
-            else
-            {
-                if (jumpCounter > 0) //if we have extra jumps then jump and decrease the jump counter
-                {
-                    //anim.SetTrigger("doubleJump");
-                    body.velocity = new Vector2(body.velocity.x, jumpPower);
-                    jumpCounter--;
-                }
-            }
-        }
+        //else
+        //{
+        //    if (coyoteCounter > 0) //if not on the ground and coyote counter bigger than 0 do a normal jump
+        //    {
+        //        //anim.SetTrigger("doubleJump");
+        //        body.velocity = new Vector2(body.velocity.x, jumpPower);
+        //    }
+        //    else
+        //    {
+        //        if (jumpCounter > 0) //if we have extra jumps then jump and decrease the jump counter
+        //        {
+        //            //anim.SetTrigger("doubleJump");
+        //            body.velocity = new Vector2(body.velocity.x, jumpPower);
+        //            jumpCounter--;
+        //        }
+        //    }
+        //}
 
         //reset coyote counter to 0 to avoid double jumps
         coyoteCounter = 0;

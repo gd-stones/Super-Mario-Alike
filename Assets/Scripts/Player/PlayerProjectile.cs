@@ -1,9 +1,12 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
+    [SerializeField] private GameObject playerDirection;
+    private int direction;
     private float lifetime;
 
     private BoxCollider2D boxCollider2D;
@@ -20,13 +23,21 @@ public class PlayerProjectile : MonoBehaviour
         lifetime = 0;
         gameObject.SetActive(true);
         boxCollider2D.enabled = true;
+        if (playerDirection.transform.eulerAngles.y == 0)
+        {
+            direction = 1;
+        }
+        else
+        {
+            direction = -1;
+        }
     }
 
     private void Update()
     {
         if (hit) return;
 
-        float movementSpeed = speed * Time.deltaTime;
+        float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
 
         lifetime += Time.deltaTime;
@@ -45,7 +56,7 @@ public class PlayerProjectile : MonoBehaviour
 
             collision.gameObject?.GetComponent<PlayerHealth>()?.TakeDamage(1);
             collision.gameObject?.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
-            Deactivate(); //when this hits any object deactivate
+            Deactivate();
         }
     }
 

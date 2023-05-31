@@ -6,14 +6,25 @@ public class ActiveScaleCollectible : MonoBehaviour
     [SerializeField] private GameObject scaleCollectible;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float moveDuration = 5f;
+    private float brickFootCoordinateY;
+    private float playerHeadCoordinateY;
+
+    private void Start()
+    {
+        brickFootCoordinateY = transform.position.y - 0.5f;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            scaleCollectible.SetActive(true);
-            StartCoroutine(MoveRightForDuration());
-            StartCoroutine(DisableComponent());
+            playerHeadCoordinateY = collision.gameObject.GetComponent<Transform>().position.y + 0.5f;
+            if (brickFootCoordinateY >= playerHeadCoordinateY)
+            {
+                scaleCollectible.SetActive(true);
+                StartCoroutine(MoveRightForDuration());
+                StartCoroutine(DisableComponent());
+            }
         }
     }
 

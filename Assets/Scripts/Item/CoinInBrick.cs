@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class CoinInBrick : MonoBehaviour
 {
-    public static int totalCoin = 0;
+    [SerializeField] private int valueCoin;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            DataManager.Instance.coin += 50;
-            gameObject.SetActive(false);
+            DataManager.Instance.coin += valueCoin;
+            Destroy(gameObject);
         }
     }
 }

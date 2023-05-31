@@ -19,26 +19,26 @@ public class PlayerAttack : MonoBehaviour
     {
         cooldownTimer += Time.deltaTime;
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (cooldownTimer >= attackCooldown && DataManager.Instance.coin >= 100)
-            {
-                //attack
-                cooldownTimer = 0;
-                Attack();
-                DataManager.Instance.coin -= 100;
-            }
+            Attack();
         }
+#endif
     }
 
-    private void Attack()
+    public void Attack()
     {
-        SoundManager.instance.PlaySound(fireballSound);
-        cooldownTimer = 0;
+        if (cooldownTimer >= attackCooldown && DataManager.Instance.coin >= 100)
+        {
+            SoundManager.instance.PlaySound(fireballSound);
+            cooldownTimer = 0;
 
-        //shoot projectile
-        fireballs[FindFireball()].transform.position = firepoint.position;
-        fireballs[FindFireball()].GetComponent<PlayerProjectile>().ActivateProjectile();
+            //Shoot projectile
+            fireballs[FindFireball()].transform.position = firepoint.position;
+            fireballs[FindFireball()].GetComponent<PlayerProjectile>().ActivateProjectile();
+            DataManager.Instance.coin -= 100;
+        }
     }
 
     private int FindFireball()
@@ -48,7 +48,6 @@ public class PlayerAttack : MonoBehaviour
             if (!fireballs[i].activeInHierarchy)
                 return i;
         }
-
         return 0;
     }
 }

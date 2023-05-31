@@ -9,7 +9,7 @@ public class EnemyDamage : MonoBehaviour
 
     private void Start()
     {
-        enemyHeadCoordinateY = transform.position.y + 0.5f;
+        enemyHeadCoordinateY = transform.position.y + 0.25f;
     }
 
     protected void OnCollisionEnter2D(Collision2D collision)
@@ -31,7 +31,6 @@ public class EnemyDamage : MonoBehaviour
         else if (collision.gameObject.tag == "Snail")
         {
             StartCoroutine(MoveUpAndDown());
-            //gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
         }
     }
 
