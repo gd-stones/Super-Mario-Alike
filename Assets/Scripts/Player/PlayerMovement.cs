@@ -6,14 +6,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
 
-    [Header("Coyote Time")]
-    [SerializeField] private float coyoteTime; //how much time the player can hang in the air before jumping
-    private float coyoteCounter; //how much time passed since the player ran off the edge
-
-    [Header("Multiple Jumps")]
-    [SerializeField] private int extraJumps;
-    private int jumpCounter;
-
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
 
@@ -58,8 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
-
-        //Adjustable jump height
+        // Adjustable jump height
         if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 3);
@@ -67,22 +58,6 @@ public class PlayerMovement : MonoBehaviour
 
         body.gravityScale = 3;
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-
-        if (isGrounded())
-        {
-            coyoteCounter = coyoteTime; //reset coyote counter when on the ground
-            jumpCounter = extraJumps; //reset jump counter to extra jump value
-        }
-        else
-        {
-            coyoteCounter -= Time.deltaTime; //start decreasing coyote counter when not on the ground
-        }
-    }
-
-    public bool CanJump()
-    {
-        if (coyoteCounter <= 0 && jumpCounter <= 0) return false;
-        return true;
     }
 
     public void Jump()
@@ -93,37 +68,27 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
         }
-        //else
-        //{
-        //    if (coyoteCounter > 0) //if not on the ground and coyote counter bigger than 0 do a normal jump
-        //    {
-        //        //anim.SetTrigger("doubleJump");
-        //        body.velocity = new Vector2(body.velocity.x, jumpPower);
-        //    }
-        //    else
-        //    {
-        //        if (jumpCounter > 0) //if we have extra jumps then jump and decrease the jump counter
-        //        {
-        //            //anim.SetTrigger("doubleJump");
-        //            body.velocity = new Vector2(body.velocity.x, jumpPower);
-        //            jumpCounter--;
-        //        }
-        //    }
-        //}
+    }
+    public void JumpUpByEnemy()
+    {
+        anim.SetTrigger("jump");
+        body.velocity = new Vector2(body.velocity.x, jumpPower);
+    }
 
-        //reset coyote counter to 0 to avoid double jumps
-        coyoteCounter = 0;
+    public void JumpOnMobile(float _jumpPower, float jumpTime, float maxJumpTime)
+    {
+        anim.SetTrigger("jump");
+
+        if (isGrounded())
+            body.velocity = new Vector2(body.velocity.x, _jumpPower);
+        else if (jumpTime > maxJumpTime)
+            body.velocity = new Vector2(body.velocity.x, _jumpPower/2);
     }
 
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
-    }
-
-    public bool canAttack()
-    {
-        return horizontalInput == 0 && isGrounded();
     }
 
     public void ChangeDirection(float value)

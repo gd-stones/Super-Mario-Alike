@@ -3,25 +3,32 @@ using UnityEngine.EventSystems;
 
 public class JumpOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private bool jump = false;
+    private bool isJumping = false;
+    private float jumpTime = 0f;
+    private float maxJumpTime = 0.5f;
+    private float jumpPower = 14.5f;
     [SerializeField] private PlayerMovement playerMovement;
 
-    void FixedUpdate()
+    void Update()
     {
-        if (jump && playerMovement.CanJump())
+        if (isJumping)
         {
-            playerMovement.Jump();
-            jump = false;
+            jumpTime += Time.deltaTime;
+            playerMovement.JumpOnMobile(jumpPower, jumpTime, maxJumpTime);
+
+            if (jumpTime > maxJumpTime)
+                isJumping = false;
         }
     }
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        jump = true;
+        isJumping = true;
     }
 
     public void OnPointerUp(PointerEventData pointerEventData)
     {
-        jump = false;
+        isJumping = false;
+        jumpTime = 0f;
     }
 }

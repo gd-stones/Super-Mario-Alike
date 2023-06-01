@@ -9,6 +9,8 @@ public class SnailDamage : MonoBehaviour
     private float playerCoordinateX;
     private float snailCoordinateX;
 
+    public static bool isInShell = false;
+
     private void Start()
     {
         snailHeadCoordinateY = transform.position.y + 0.25f;
@@ -24,11 +26,11 @@ public class SnailDamage : MonoBehaviour
 
             if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX <= snailCoordinateX)
             {
-                StartCoroutine(MoveObjectToDirection(gameObject, 1f, Vector3.right));
+                StartCoroutine(MoveObjectToDirection(gameObject, 3f, Vector3.right));
             }
             else if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX > snailCoordinateX)
             {
-                StartCoroutine(MoveObjectToDirection(gameObject, 1f, Vector3.left));
+                StartCoroutine(MoveObjectToDirection(gameObject, 3f, Vector3.left));
             }
             else
             {
@@ -47,13 +49,14 @@ public class SnailDamage : MonoBehaviour
             objectToMove.transform.Translate(direction * distanceToMove);
             gameObject.GetComponent<EnemyPatrol>().enabled = false;
             gameObject.GetComponent<Animator>().SetTrigger("snail_Hurt");
+            isInShell = true;
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        isInShell = false;
         gameObject.GetComponent<Animator>().SetBool("snail_Walk", true);
         gameObject.GetComponent<EnemyPatrol>().enabled = true;
-        //objectToMove.SetActive(false);
     }
 }

@@ -43,6 +43,9 @@ public class SelectionCharacter : MonoBehaviour
 
     public void WriteCharacter()
     {
+        //PlayerPrefs.SetInt("")
+
+
         SaveData data = new SaveData();
         data.nameCharacter = nameCharacter;
 

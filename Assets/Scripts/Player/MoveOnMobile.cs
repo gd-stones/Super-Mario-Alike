@@ -6,24 +6,25 @@ public class MoveOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     [SerializeField] private int direction;
     [SerializeField] private PlayerMovement playerMovement;
     float jumpAtTime = -1;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         playerMovement.ChangeDirection(direction);
-        jumpAtTime = Time.time;
+        //jumpAtTime = Time.time;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         playerMovement.ResetDirection();
-        jumpAtTime = -1;
+        //jumpAtTime = -1;
     }
 
-    void Update()
-    {
-        if(jumpAtTime > -1)
-        {
-            var duration = Time.time - jumpAtTime;
+    //void Update()
+    //{
+    //    if(jumpAtTime > -1)
+    //    {
+    //        var duration = Time.time - jumpAtTime;
 
-        }
-    }
+    //    }
+    //}
 }

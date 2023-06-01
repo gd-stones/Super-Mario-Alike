@@ -28,6 +28,7 @@ public class EnemyDamage : MonoBehaviour
             {
                 gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
                 gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
+                collision.gameObject.GetComponent<PlayerMovement>().JumpUpByEnemy();
             }
             else
             {

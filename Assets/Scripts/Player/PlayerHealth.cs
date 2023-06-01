@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        if (invulnerable) return;
+        if (invulnerable || SnailDamage.isInShell) return;
 
         if (transform.localScale.x > 1)
         {
