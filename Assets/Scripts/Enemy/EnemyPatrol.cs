@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     [Header("Patrol Points")]
-    private float movementDistance = 5f;
+    [SerializeField] private float movementDistance = 8f;
     private float leftEdge;
     private float rightEdge;
 
@@ -36,14 +36,14 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (movingLeft)
         {
-            if (transform.position.x >= leftEdge && !CheckObstacle(1))
+            if (transform.position.x >= leftEdge)
                 MoveInDirection(1);
             else
                 DirectionChange();
         }
         else
         {
-            if (transform.position.x <= rightEdge && !CheckObstacle(-1))
+            if (transform.position.x <= rightEdge)
                 MoveInDirection(-1);
             else
                 DirectionChange();
@@ -68,18 +68,22 @@ public class EnemyPatrol : MonoBehaviour
 
         // Make transform face direction
         transform.localScale = new Vector3(initScale.x * direction, initScale.y, initScale.z);
-        // Move in that direction
         transform.position = new Vector3(transform.position.x - Time.deltaTime * direction * speed,
             transform.position.y, transform.position.z);
     }
 
     private bool CheckObstacle(int direction)
     {
-        // Cast a ray to check for obstacles
         Vector2 rayOrigin = new Vector2(transform.position.x - direction * 1.2f, transform.position.y + 0.25f);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector3.right * direction, 0.4f, obstacleLayer);
 
         //Debug.DrawRay(rayOrigin, (Vector3.right * direction) * 0.5f, Color.red);
         return hit.collider != null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Ground")
+            movingLeft = !movingLeft;
     }
 }
