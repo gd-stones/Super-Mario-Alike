@@ -170,10 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721ccfc203409e149a991be8f47e4c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDistance: 2.5
   speed: 1
   idleDuration: 1.5
   condition: snail_Walk
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &906560940
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,13 +28,11 @@ public class DataManager : MonoBehaviour
     public void WriteData()
     {
         SaveData data = new SaveData();
-
-        //Variables that need to be stored
         data.coin = coin;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/coinmanager.json", json);
-        Debug.Log("Application.persistentDataPath --- " + Application.persistentDataPath);
+        //Debug.Log("Application.persistentDataPath --- " + Application.persistentDataPath);
     }
 
     public void LoadData()
@@ -46,7 +44,6 @@ public class DataManager : MonoBehaviour
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            //Variables that need to be stored
             coin = data.coin;
         }
     }
