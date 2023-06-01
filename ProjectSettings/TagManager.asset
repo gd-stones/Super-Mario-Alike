@@ -12,6 +12,7 @@ TagManager:
   - End
   - Radish
   - Mushroom
+  - Flower
   layers:
   - Default
   - TransparentFX

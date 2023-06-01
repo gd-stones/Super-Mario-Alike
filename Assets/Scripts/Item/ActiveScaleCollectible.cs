@@ -19,6 +19,7 @@ public class ActiveScaleCollectible : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerHeadCoordinateY = collision.gameObject.GetComponent<Transform>().position.y + 0.5f;
+
             if (brickFootCoordinateY >= playerHeadCoordinateY)
             {
                 scaleCollectible.SetActive(true);
@@ -34,7 +35,8 @@ public class ActiveScaleCollectible : MonoBehaviour
         while (timer < moveDuration)
         {
             Vector3 movement = new Vector3(moveSpeed, 0f, 0f);
-            scaleCollectible.transform.Translate(movement * Time.deltaTime);
+            if (scaleCollectible != null)
+                scaleCollectible.transform.Translate(movement * Time.deltaTime);
 
             timer += Time.deltaTime;
             yield return null;

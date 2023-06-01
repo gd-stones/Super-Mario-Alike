@@ -22,7 +22,6 @@ public class DataManager : MonoBehaviour
     [System.Serializable] //Cho phep du lieu duoc chuyen doi thanh dang json
     class SaveData
     {
-        //Variables that need to be stored
         public int coin;
     }
 

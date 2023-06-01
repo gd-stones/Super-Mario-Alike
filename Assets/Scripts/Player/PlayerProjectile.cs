@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
@@ -49,12 +48,11 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Mushroom" || collision.gameObject.tag == "Radish" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Mushroom" || collision.gameObject.tag == "Radish" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Flower")
         {
             hit = true;
             boxCollider2D.enabled = false;
 
-            collision.gameObject?.GetComponent<PlayerHealth>()?.TakeDamage(1);
             collision.gameObject?.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
             Deactivate();
         }

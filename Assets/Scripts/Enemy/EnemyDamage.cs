@@ -14,6 +14,12 @@ public class EnemyDamage : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
+        if (gameObject.tag == "Flower" && collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            return;
+        }
+
         if (collision.gameObject.tag == "Player")
         {
             playerFootCoordinateY = collision.gameObject.GetComponent<Transform>().position.y;
