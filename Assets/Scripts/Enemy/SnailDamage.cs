@@ -59,7 +59,6 @@ public class SnailDamage : MonoBehaviour
                 else if (direction == Vector3.left)
                     direction = Vector3.right;
             }
-
             hitWall = false;
 
             objectToMove.transform.Translate(direction * distanceToMove);

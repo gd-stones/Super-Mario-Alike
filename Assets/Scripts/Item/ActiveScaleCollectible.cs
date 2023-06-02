@@ -9,9 +9,13 @@ public class ActiveScaleCollectible : MonoBehaviour
     private float brickFootCoordinateY;
     private float playerHeadCoordinateY;
 
+    private Vector3 initialPosition;
+    public float moveSpeedBrick = 5f;
+
     private void Start()
     {
         brickFootCoordinateY = transform.position.y - 0.5f;
+        initialPosition = transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,6 +29,8 @@ public class ActiveScaleCollectible : MonoBehaviour
                 scaleCollectible.SetActive(true);
                 StartCoroutine(MoveRightForDuration());
                 StartCoroutine(DisableComponent());
+
+                StartCoroutine(MoveBrick());
             }
         }
     }
@@ -47,5 +53,21 @@ public class ActiveScaleCollectible : MonoBehaviour
     {
         yield return new WaitForSeconds(moveDuration);
         Destroy(this);
+    }
+
+    private IEnumerator MoveBrick()
+    {
+        Vector3 targetPosition = transform.position + new Vector3(0, 0.4f, 0);
+        while (transform.position != targetPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * moveSpeed);
+            yield return null;
+        }
+
+        while (transform.position != initialPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, initialPosition, Time.deltaTime * moveSpeed);
+            yield return null;
+        }
     }
 }

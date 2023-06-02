@@ -23,13 +23,9 @@ public class PlayerProjectile : MonoBehaviour
         gameObject.SetActive(true);
         boxCollider2D.enabled = true;
         if (playerDirection.transform.eulerAngles.y == 0)
-        {
             direction = 1;
-        }
         else
-        {
             direction = -1;
-        }
     }
 
     private void Update()
@@ -41,14 +37,17 @@ public class PlayerProjectile : MonoBehaviour
 
         lifetime += Time.deltaTime;
         if (lifetime > resetTime)
-        {
             Deactivate();
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Mushroom" || collision.gameObject.tag == "Radish" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Flower")
+        if (collision.gameObject.tag == "Mushroom"
+            || collision.gameObject.tag == "Radish"
+            || collision.gameObject.tag == "Enemy"
+            || collision.gameObject.tag == "Flower"
+            || collision.gameObject.tag == "Snail"
+            || collision.gameObject.tag == "Wall")
         {
             hit = true;
             boxCollider2D.enabled = false;
