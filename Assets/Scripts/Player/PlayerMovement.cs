@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
 
-    private Rigidbody2D body;
+    public Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
     private float horizontalInput;
@@ -35,26 +35,18 @@ public class PlayerMovement : MonoBehaviour
     public void Movement()
     {
         if (horizontalInput > 0.01f)
-        {
             transform.eulerAngles = new Vector3(0, 0, 0);
-        }
         else if (horizontalInput < -0.01f)
-        {
             transform.eulerAngles = new Vector3(0, 180, 0);
-        }
 
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("isGrounded", isGrounded());
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             Jump();
-        }
         // Adjustable jump height
         if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
-        {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 3);
-        }
 
         body.gravityScale = 3;
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
@@ -69,21 +61,21 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jumpPower);
         }
     }
-    public void JumpUpByEnemy()
+    public void JumpOnEnemyHead()
     {
         anim.SetTrigger("jump");
-        body.velocity = new Vector2(body.velocity.x, jumpPower);
+        body.velocity = new Vector2(body.velocity.x, jumpPower / 2);
     }
 
-    public void JumpOnMobile(float _jumpPower, float jumpTime, float maxJumpTime)
-    {
-        anim.SetTrigger("jump");
+    //public void JumpOnMobile(float _jumpPower, float jumpTime, float maxJumpTime)
+    //{
+    //    anim.SetTrigger("jump");
 
-        if (isGrounded())
-            body.velocity = new Vector2(body.velocity.x, _jumpPower);
-        else if (jumpTime > maxJumpTime)
-            body.velocity = new Vector2(body.velocity.x, _jumpPower/2);
-    }
+    //    if (isGrounded())
+    //        body.velocity = new Vector2(body.velocity.x, _jumpPower);
+    //    else if (jumpTime > maxJumpTime)
+    //        body.velocity = new Vector2(body.velocity.x, _jumpPower / 2);
+    //}
 
     private bool isGrounded()
     {
