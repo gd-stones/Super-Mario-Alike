@@ -85,9 +85,7 @@ public class PlayerHealth : MonoBehaviour
 
         //Activate all attached component classes
         foreach (Behaviour component in components)
-        {
             component.enabled = true;
-        }
     }
 
     private IEnumerator Invunerability()

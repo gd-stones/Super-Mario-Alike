@@ -12,7 +12,7 @@ public class EnemyDamage : MonoBehaviour
         enemyHeadCoordinateY = transform.position.y + 0.25f;
     }
 
-    protected void OnCollisionEnter2D(Collision2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "Flower" && collision.gameObject.tag == "Player")
         {

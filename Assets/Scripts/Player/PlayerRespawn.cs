@@ -20,20 +20,23 @@ public class PlayerRespawn : MonoBehaviour
             CheckRespawn();
     }
 
-    public void CheckRespawn()
+   private void CheckRespawn()
     {
         if (currentCheckpoint == null) //Check is checkpoint available
+        {
             StartCoroutine(LoadLoseScene("Lose", 0.6f));
+            return;
+        }
 
         transform.position = currentCheckpoint.position; // Move player to checkpoint position
         playerHealth.Respawn(); // Restore player health and reset animation
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //activate checkpoints
+    private void OnTriggerEnter2D(Collider2D collision) // Activate checkpoints
     {
         if (collision.transform.tag == "Checkpoint")
         {
-            currentCheckpoint = collision.transform; //store the checkpoint that we activated as the current one
+            currentCheckpoint = collision.transform; // Store the checkpoint that we activated as the current one
             //SoundManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Collider2D>().enabled = false;
             collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear");

@@ -11,14 +11,13 @@ public class SnailDamage : MonoBehaviour
 
     public static bool isInShell = false;
     private bool hitWall = false;
-    private Coroutine currentMovementCoroutine;
 
     private void Start()
     {
         snailHeadCoordinateY = transform.position.y + 0.25f;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -50,7 +49,7 @@ public class SnailDamage : MonoBehaviour
         float distanceToMove = speed * Time.deltaTime;
         float elapsedTime = 0f;
 
-        while (elapsedTime < 4f)
+        while (elapsedTime < 3.5f)
         {
             if (hitWall)
             {
