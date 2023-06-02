@@ -10,6 +10,8 @@ public class SnailDamage : MonoBehaviour
     private float snailCoordinateX;
 
     public static bool isInShell = false;
+    private bool hitWall = false;
+    private Coroutine currentMovementCoroutine;
 
     private void Start()
     {
@@ -20,22 +22,26 @@ public class SnailDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerFootCoordinateY = collision.gameObject.GetComponent<Transform>().position.y;
-            playerCoordinateX = collision.gameObject.GetComponent<Transform>().position.x;
-            snailCoordinateX = gameObject.GetComponent<Transform>().position.x;
+            playerFootCoordinateY = collision.gameObject.transform.position.y;
+            playerCoordinateX = collision.gameObject.transform.position.x;
+            snailCoordinateX = transform.position.x;
 
             if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX <= snailCoordinateX)
             {
-                StartCoroutine(MoveObjectToDirection(gameObject, 3f, Vector3.right));
+               StartCoroutine(MoveObjectToDirection(gameObject, 2f, Vector3.right));
             }
             else if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX > snailCoordinateX)
             {
-                StartCoroutine(MoveObjectToDirection(gameObject, 3f, Vector3.left));
+                StartCoroutine(MoveObjectToDirection(gameObject, 2f, Vector3.left));
             }
             else
             {
                 collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             }
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            hitWall = true;
         }
     }
 
@@ -44,8 +50,18 @@ public class SnailDamage : MonoBehaviour
         float distanceToMove = speed * Time.deltaTime;
         float elapsedTime = 0f;
 
-        while (elapsedTime < 5f)
+        while (elapsedTime < 4f)
         {
+            if (hitWall)
+            {
+                if (direction == Vector3.right)
+                    direction = Vector3.left;
+                else if (direction == Vector3.left)
+                    direction = Vector3.right;
+            }
+
+            hitWall = false;
+
             objectToMove.transform.Translate(direction * distanceToMove);
             gameObject.GetComponent<EnemyPatrol>().enabled = false;
             gameObject.GetComponent<Animator>().SetTrigger("snail_Hurt");

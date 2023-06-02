@@ -5,26 +5,20 @@ public class MoveOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 {
     [SerializeField] private int direction;
     [SerializeField] private PlayerMovement playerMovement;
-    float jumpAtTime = -1;
+    private float inputOnMobile = 0;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        playerMovement.ChangeDirection(direction);
-        //jumpAtTime = Time.time;
+        inputOnMobile = inputOnMobile + Time.deltaTime * direction;
+        if (inputOnMobile > direction || inputOnMobile < direction)
+            inputOnMobile = direction;
+
+        playerMovement.ChangeDirection(inputOnMobile);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         playerMovement.ResetDirection();
-        //jumpAtTime = -1;
+        inputOnMobile = 0;
     }
-
-    //void Update()
-    //{
-    //    if(jumpAtTime > -1)
-    //    {
-    //        var duration = Time.time - jumpAtTime;
-
-    //    }
-    //}
 }
