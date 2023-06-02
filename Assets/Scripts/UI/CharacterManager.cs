@@ -2,71 +2,36 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    public GameObject character;
+    private int characterId;
+    private int characterIdActive;
+    public GameObject[] characters;
+    private GameObject characterActive;
 
     private void Start()
     {
-        character = GameObject.Find(SelectionCharacter.Instance.nameCharacter.ToString());
-        print(SelectionCharacter.Instance.nameCharacter.ToString());
+        characterIdActive = PlayerPrefs.GetInt("characterId");
     }
 
     private void Update()
     {
-        //print("------------------ " + character.name.ToString());
-
-        if (character != null)
+        if (characterActive != null)
         {
-            if (character.activeSelf)
-            {
-                print(character.activeSelf);
-                return;
-            }
-            else
-            {
-                character.SetActive(true);
-            }
+            print("wwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+            return;
         }
-        else
-        {
-            print("character is null");
-        }
+        ActiveCharacter();
     }
 
-
-    //public static string activeCharacter;
-    //public static GameObject character;
-
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
-
-    //private void Update()
-    //{
-    //    character = GameObject.Find(activeCharacter);
-    //    //print("------------------ " + character.name.ToString());
-
-    //    if (character != null)
-    //    {
-    //        if (character.activeSelf)
-    //        {
-    //            print(character.activeSelf);
-    //            return;
-    //        }
-    //        else
-    //        {
-    //            character.SetActive(true);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        print("character is null");
-    //    }
-    //}
+    private void ActiveCharacter()
+    {
+        foreach (var character in characters)
+        {
+            characterId = character.GetComponent<SelectionCharacter>().characterId;
+            if (characterId == characterIdActive)
+            {
+                character.SetActive(true);
+                characterActive = character;
+            }    
+        }
+    }
 }
