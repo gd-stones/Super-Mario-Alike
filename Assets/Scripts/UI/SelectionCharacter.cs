@@ -9,5 +9,5 @@ public class SelectionCharacter : MonoBehaviour
     {
         PlayerPrefs.SetInt("characterId", characterId);
         SceneManager.LoadScene("MainMenu");
-    }
+    } 
 }

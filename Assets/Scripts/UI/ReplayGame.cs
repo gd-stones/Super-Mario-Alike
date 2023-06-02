@@ -6,9 +6,9 @@ public class ReplayGame : MonoBehaviour, IPointerDownHandler
 {
     private string levelToLoad;
 
-    public void SetLevelToLoad(string levelName)
+    private void FixedUpdate()
     {
-        levelToLoad = levelName;
+        levelToLoad = PlayerPrefs.GetString("currentSceneName");
     }
 
     public void OnPointerDown(PointerEventData eventData)

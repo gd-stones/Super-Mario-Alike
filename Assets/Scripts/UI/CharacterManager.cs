@@ -16,7 +16,6 @@ public class CharacterManager : MonoBehaviour
     {
         if (characterActive != null)
         {
-            print("wwwwwwwwwwwwwwwwwwwwwwwwwwwww");
             return;
         }
         ActiveCharacter();

@@ -11,27 +11,22 @@ public class PlayerRespawn : MonoBehaviour
     private void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
+        PlayerPrefs.SetString("currentSceneName", SceneManager.GetActiveScene().name);
     }
 
     private void Update()
     {
         if (gameObject.GetComponent<PlayerHealth>().currentHealth <= 0 || transform.position.y < -10)
-        {
             CheckRespawn();
-        }
     }
 
     public void CheckRespawn()
     {
         if (currentCheckpoint == null) //Check is checkpoint available
-        {
-            //SceneManager.LoadScene("Lose");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            return;
-        }
+            StartCoroutine(LoadLoseScene("Lose", 0.6f));
 
-        transform.position = currentCheckpoint.position; //Move player to checkpoint position
-        playerHealth.Respawn(); //restore player health and reset animation
+        transform.position = currentCheckpoint.position; // Move player to checkpoint position
+        playerHealth.Respawn(); // Restore player health and reset animation
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //activate checkpoints
@@ -40,8 +35,8 @@ public class PlayerRespawn : MonoBehaviour
         {
             currentCheckpoint = collision.transform; //store the checkpoint that we activated as the current one
             //SoundManager.instance.PlaySound(checkpointSound);
-            collision.GetComponent<Collider2D>().enabled = false; //deactivate checkpoint collider
-            collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear"); //trigger checkpoint animation
+            collision.GetComponent<Collider2D>().enabled = false;
+            collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear");
         }
         else if (collision.transform.tag == "Start")
         {
@@ -59,7 +54,6 @@ public class PlayerRespawn : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         string currentSceneName = SceneManager.GetActiveScene().name;
-
         if (currentSceneName == "Level 10")
         {
             SceneManager.LoadScene("Win");
@@ -71,5 +65,11 @@ public class PlayerRespawn : MonoBehaviour
         string nextSceneName = currentSceneName.Substring(0, currentSceneName.Length - 1) + nextSceneNumber.ToString();
 
         SceneManager.LoadScene(nextSceneName);
+    }
+
+    private IEnumerator LoadLoseScene(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 }

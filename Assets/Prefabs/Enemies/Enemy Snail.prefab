@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameConditionHurt: snail_Hurt
-  delayTimeDeactive: 5
+  delayTimeDeactive: 0.5
 --- !u!114 &906560946
 MonoBehaviour:
   m_ObjectHideFlags: 0

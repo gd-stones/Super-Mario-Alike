@@ -16335,14 +16335,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
-    - target: {fileID: 906560940, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
-      propertyPath: delayTimeDeactive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 906560941, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_Name
       value: Enemy Snail
@@ -16390,10 +16382,6 @@ PrefabInstance:
     - target: {fileID: 6031109200295834521, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6031109200295834522, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
-      propertyPath: m_Material
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
