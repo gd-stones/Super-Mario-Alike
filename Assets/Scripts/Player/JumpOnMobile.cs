@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class JumpOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // ------------------------------------------------------- Wordaround 2 ---------------------------------------------------
+    // ------------------------------------------------------- Workaround 2 ---------------------------------------------------
     [SerializeField] private PlayerMovement playerMovement;
 
     public void OnPointerDown(PointerEventData pointerEventData)
@@ -17,8 +17,7 @@ public class JumpOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             playerMovement.body.velocity = new Vector2(playerMovement.body.velocity.x, playerMovement.body.velocity.y / 3);
     }
 
-
-    // ------------------------------------------------------- Wordaround 1 ---------------------------------------------------
+    // ------------------------------------------------------- Workaround 1 ---------------------------------------------------
     //private bool isJumping = false;
     //private float jumpTime = 0f;
     //private float maxJumpTime = 0.5f;

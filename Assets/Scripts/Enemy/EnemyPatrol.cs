@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    [Header("Patrol Points")]
-    [SerializeField] private float movementDistance = 8f;
-    private float leftEdge;
-    private float rightEdge;
-
     [Header("Movement parameters")]
     [SerializeField] private float speed;
     private Vector3 initScale;
-    private bool movingLeft = true;
+    private bool movingLeft = false;
+    private bool isMoving = true;
 
     [Header("Idle Behaviour")]
     [SerializeField] private float idleDuration;
@@ -20,34 +16,27 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private string condition; //radish_Run
     private Animator anim;
 
-    [Header("Collision Detection")]
-    [SerializeField] private LayerMask obstacleLayer;
-
     private void Start()
     {
-        leftEdge = transform.position.x - movementDistance;
-        rightEdge = transform.position.x + movementDistance;
         anim = gameObject.GetComponent<Animator>();
-
         initScale = transform.localScale;
     }
 
     private void Update()
     {
-        if (movingLeft)
-        {
-            if (transform.position.x >= leftEdge)
-                MoveInDirection(1);
-            else
-                DirectionChange();
-        }
+        // 1 <=> movement to the left; -1 <=> movement to the right
+        if (movingLeft && isMoving)
+            MoveInDirection(1);
+        else if (!movingLeft && isMoving)
+            MoveInDirection(-1);
         else
-        {
-            if (transform.position.x <= rightEdge)
-                MoveInDirection(-1);
-            else
-                DirectionChange();
-        }
+            DirectionChange();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Ground")
+            isMoving = false;
     }
 
     private void DirectionChange()
@@ -58,6 +47,7 @@ public class EnemyPatrol : MonoBehaviour
         if (idleTimer > idleDuration)
         {
             movingLeft = !movingLeft;
+            isMoving = true;
         }
     }
 
@@ -67,23 +57,8 @@ public class EnemyPatrol : MonoBehaviour
         anim.SetBool(condition, true);
 
         // Make transform face direction
-        transform.localScale = new Vector3(initScale.x * direction, initScale.y, initScale.z);
+        transform.localScale = new Vector3(Mathf.Abs(initScale.x) * direction, initScale.y, initScale.z);
         transform.position = new Vector3(transform.position.x - Time.deltaTime * direction * speed,
             transform.position.y, transform.position.z);
-    }
-
-    private bool CheckObstacle(int direction)
-    {
-        Vector2 rayOrigin = new Vector2(transform.position.x - direction * 1.2f, transform.position.y + 0.25f);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector3.right * direction, 0.4f, obstacleLayer);
-
-        //Debug.DrawRay(rayOrigin, (Vector3.right * direction) * 0.5f, Color.red);
-        return hit.collider != null;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Ground")
-            movingLeft = !movingLeft;
     }
 }

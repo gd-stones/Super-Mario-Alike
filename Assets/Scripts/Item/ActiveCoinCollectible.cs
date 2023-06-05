@@ -29,8 +29,6 @@ public class ActiveCoinCollectible : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(hasSpawnedCoin);
-
         if (collision.gameObject.tag == "Player")
         {
             if (coinCount >= maxCoinCount)
