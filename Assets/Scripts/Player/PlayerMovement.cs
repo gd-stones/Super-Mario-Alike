@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         // Adjustable jump height
         if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
-            body.velocity = new Vector2(body.velocity.x, body.velocity.y / 3);
+            body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
 
         body.gravityScale = 3;
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
@@ -57,9 +57,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetTrigger("jump");
 
         if (isGrounded())
-        {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
-        }
     }
     public void JumpOnEnemyHead()
     {
@@ -79,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, groundLayer);
         return raycastHit.collider != null;
     }
 

@@ -62,12 +62,12 @@ public class PlayerRespawn : MonoBehaviour
             SceneManager.LoadScene("Win");
             yield return null;
         }
-        string sceneNumberString = currentSceneName.Substring(currentSceneName.Length - 1);
-        int sceneNumber = int.Parse(sceneNumberString);
-        int nextSceneNumber = sceneNumber + 1;
-        string nextSceneName = currentSceneName.Substring(0, currentSceneName.Length - 1) + nextSceneNumber.ToString();
 
-        SceneManager.LoadScene(nextSceneName);
+        int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1; 
+        if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
+            PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+
+        SceneManager.LoadScene(nextSceneLoad);
     }
 
     private IEnumerator LoadLoseScene(string sceneName, float delay)

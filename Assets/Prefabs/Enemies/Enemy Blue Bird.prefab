@@ -148,13 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721ccfc203409e149a991be8f47e4c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDistance: 8
   speed: 1.5
   idleDuration: 1
   condition: blue_Bird_Fly
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 7985
 --- !u!114 &879142787
 MonoBehaviour:
   m_ObjectHideFlags: 0
