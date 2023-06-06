@@ -41,12 +41,7 @@ public class PlayerScale : MonoBehaviour
     private void MoveScaleCollectible()
     {
         if (hitWall)
-        {
-            if (direction == 1)
-                direction = -1;
-            else if (direction == -1)
-                direction = 1;
-        }
+            direction = -direction;
         hitWall = false;
 
         Vector3 movement = new Vector3(moveSpeed * direction, 0f, 0f);

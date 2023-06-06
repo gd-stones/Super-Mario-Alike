@@ -11,6 +11,7 @@ public class SnailDamage : MonoBehaviour
 
     public static bool isInShell = false;
     private bool hitWall = false;
+    private bool playerCollided = false;
 
     private void Start()
     {
@@ -19,28 +20,47 @@ public class SnailDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            playerFootCoordinateY = collision.gameObject.transform.position.y;
-            playerCoordinateX = collision.gameObject.transform.position.x;
+            playerFootCoordinateY = collision.transform.position.y;
+            playerCoordinateX = collision.transform.position.x;
             snailCoordinateX = transform.position.x;
 
-            if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX <= snailCoordinateX)
+            if (!playerCollided && playerFootCoordinateY > snailHeadCoordinateY)
             {
-               StartCoroutine(MoveObjectToDirection(gameObject, 2f, Vector3.right));
+                collision.GetComponent<PlayerMovement>().JumpOnEnemyHead();
+                playerCollided = true;
+                StartCoroutine(EnterShell());
             }
-            else if (playerFootCoordinateY > snailHeadCoordinateY && playerCoordinateX > snailCoordinateX)
-            {
-                StartCoroutine(MoveObjectToDirection(gameObject, 2f, Vector3.left));
-            }
+            else if (isInShell)
+                StartCoroutine(MoveObjectToDirection(gameObject, 2f, playerCoordinateX <= snailCoordinateX ? Vector3.right : Vector3.left));
             else
-            {
-                collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-            }
+                collision.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
-        else if (collision.gameObject.CompareTag("Wall"))
-        {
+        else if (collision.CompareTag("Wall"))
             hitWall = true;
+    }
+
+    IEnumerator EnterShell()
+    {
+        isInShell = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 2f)
+        {
+            gameObject.GetComponent<EnemyPatrol>().enabled = false;
+            gameObject.GetComponent<Animator>().SetTrigger("snail_Hurt");
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerCollided = false;
+        if (!playerCollided)
+        {
+            isInShell = false;
+            gameObject.GetComponent<Animator>().SetBool("snail_Walk", true);
+            gameObject.GetComponent<EnemyPatrol>().enabled = true;
         }
     }
 
@@ -48,28 +68,23 @@ public class SnailDamage : MonoBehaviour
     {
         float distanceToMove = speed * Time.deltaTime;
         float elapsedTime = 0f;
+        isInShell = false;
 
         while (elapsedTime < 3.5f)
         {
             if (hitWall)
-            {
-                if (direction == Vector3.right)
-                    direction = Vector3.left;
-                else if (direction == Vector3.left)
-                    direction = Vector3.right;
-            }
+                direction = -direction;
             hitWall = false;
 
             objectToMove.transform.Translate(direction * distanceToMove);
             gameObject.GetComponent<EnemyPatrol>().enabled = false;
             gameObject.GetComponent<Animator>().SetTrigger("snail_Hurt");
-            isInShell = true;
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        isInShell = false;
+        playerCollided = false;
         gameObject.GetComponent<Animator>().SetBool("snail_Walk", true);
         gameObject.GetComponent<EnemyPatrol>().enabled = true;
     }
