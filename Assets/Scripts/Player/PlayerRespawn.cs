@@ -20,7 +20,7 @@ public class PlayerRespawn : MonoBehaviour
             CheckRespawn();
     }
 
-   private void CheckRespawn()
+    private void CheckRespawn()
     {
         if (currentCheckpoint == null) //Check is checkpoint available
         {
@@ -38,7 +38,7 @@ public class PlayerRespawn : MonoBehaviour
         {
             currentCheckpoint = collision.transform; // Store the checkpoint that we activated as the current one
             SoundManager.instance.PlaySound(checkpointSound);
-            
+
             collision.GetComponent<Collider2D>().enabled = false;
             collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear");
         }
@@ -64,11 +64,12 @@ public class PlayerRespawn : MonoBehaviour
             yield return null;
         }
 
-        int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1; 
+        int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
             PlayerPrefs.SetInt("levelAt", nextSceneLoad);
 
         SceneManager.LoadScene(nextSceneLoad);
+        ScoreCalculator.score = 0;
     }
 
     private IEnumerator LoadLoseScene(string sceneName, float delay)

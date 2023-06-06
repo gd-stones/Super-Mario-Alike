@@ -33,7 +33,7 @@ public class SnailDamage : MonoBehaviour
                 StartCoroutine(EnterShell());
             }
             else if (isInShell)
-                StartCoroutine(MoveObjectToDirection(gameObject, 2f, playerCoordinateX <= snailCoordinateX ? Vector3.right : Vector3.left));
+                StartCoroutine(MoveObjectToDirection(gameObject, 4f, playerCoordinateX <= snailCoordinateX ? Vector3.right : Vector3.left));
             else
                 collision.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
