@@ -14,5 +14,6 @@ public class ReplayGame : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         SceneManager.LoadScene(levelToLoad);
+        ScoreCalculator.score = 0;
     }
 }

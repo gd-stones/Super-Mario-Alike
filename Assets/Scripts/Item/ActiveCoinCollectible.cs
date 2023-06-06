@@ -44,6 +44,8 @@ public class ActiveCoinCollectible : MonoBehaviour
                 StartCoroutine(ResetCoinSpawn());
                 StartCoroutine(MoveBrick());
                 StartCoroutine(MoveCoin());
+
+                ScoreCalculator.score += 5;
             }
         }
     }

@@ -19,7 +19,7 @@ public class DataManager : MonoBehaviour
         LoadData();
     }
 
-    [System.Serializable] //Cho phep du lieu duoc chuyen doi thanh dang json
+    [System.Serializable] // Cho phep du lieu duoc chuyen doi thanh dang json
     class SaveData
     {
         public int coin;
