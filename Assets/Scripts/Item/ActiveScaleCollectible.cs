@@ -12,6 +12,8 @@ public class ActiveScaleCollectible : MonoBehaviour
     private Vector3 initialPosition;
     public float moveSpeedBrick = 5f;
 
+    public bool headCollision = false;
+
     private void Start()
     {
         brickFootCoordinateY = transform.position.y - 0.5f;
@@ -20,39 +22,20 @@ public class ActiveScaleCollectible : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (headCollision)
+            return;
+
         if (collision.gameObject.tag == "Player")
         {
             playerHeadCoordinateY = collision.gameObject.GetComponent<Transform>().position.y + 0.5f;
 
             if (brickFootCoordinateY >= playerHeadCoordinateY)
             {
-                scaleCollectible.SetActive(true);
-                StartCoroutine(MoveRightForDuration());
-                StartCoroutine(DisableComponent());
-
+                headCollision = true;
                 StartCoroutine(MoveBrick());
+                scaleCollectible.SetActive(true);
             }
         }
-    }
-
-    private IEnumerator MoveRightForDuration()
-    {
-        float timer = 0f;
-        while (timer < moveDuration)
-        {
-            Vector3 movement = new Vector3(moveSpeed, 0f, 0f);
-            if (scaleCollectible != null)
-                scaleCollectible.transform.Translate(movement * Time.deltaTime);
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    private IEnumerator DisableComponent()
-    {
-        yield return new WaitForSeconds(moveDuration);
-        Destroy(this);
     }
 
     private IEnumerator MoveBrick()

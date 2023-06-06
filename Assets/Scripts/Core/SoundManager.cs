@@ -15,15 +15,15 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
 
-            //keep this object even when we go to new scene
+            // Keep this object even when we go to new scene
             DontDestroyOnLoad(gameObject);
         }
-        else if (instance != null && instance != this) //Destroy duplicate gameobjects
+        else if (instance != null && instance != this) // Destroy duplicate gameobjects
         {
             Destroy(gameObject);
         }
 
-        //assign initial volumes
+        // Assign initial volumes
         ChangeMusicVolume(0);
         ChangeSoundVolume(0);
     }
@@ -45,11 +45,11 @@ public class SoundManager : MonoBehaviour
 
     private void ChangeSourceVolume(float baseVolume, string volumeName, float change, AudioSource source)
     {
-        //get initial value fo volume and change it
+        // Get initial value fo volume and change it
         float currentVolume = PlayerPrefs.GetFloat(volumeName, 1);
         currentVolume += change;
 
-        //check if we reached the maximum or minimum value
+        // Check if we reached the maximum or minimum value
         if (currentVolume > 1)
         {
             currentVolume = 0;
@@ -59,11 +59,11 @@ public class SoundManager : MonoBehaviour
             currentVolume = 1;
         }
 
-        //assign final value
+        // Assign final value
         float finalVolume = currentVolume * baseVolume;
         source.volume = finalVolume;
 
-        //save final value to player prefs
+        // Save final value to player prefs
         PlayerPrefs.SetFloat(volumeName, currentVolume);
     }
 }
