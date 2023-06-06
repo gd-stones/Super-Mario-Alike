@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private AudioClip checkpointSound;
-    private Transform currentCheckpoint; //Store last checkpoint
+    private Transform currentCheckpoint; // Store last checkpoint
     private PlayerHealth playerHealth;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (currentCheckpoint == null) //Check is checkpoint available
         {
-            StartCoroutine(LoadLoseScene("Lose", 0.6f));
+            StartCoroutine(LoadLoseScene("Lose", 1f));
             return;
         }
 
@@ -37,7 +37,8 @@ public class PlayerRespawn : MonoBehaviour
         if (collision.transform.tag == "Checkpoint")
         {
             currentCheckpoint = collision.transform; // Store the checkpoint that we activated as the current one
-            //SoundManager.instance.PlaySound(checkpointSound);
+            SoundManager.instance.PlaySound(checkpointSound);
+            
             collision.GetComponent<Collider2D>().enabled = false;
             collision.GetComponent<Animator>().SetTrigger("checkpoint_Appear");
         }
@@ -48,7 +49,7 @@ public class PlayerRespawn : MonoBehaviour
         else if (collision.transform.tag == "End")
         {
             collision.GetComponent<Animator>().SetTrigger("end_Appear");
-            StartCoroutine(LoadSceneWithDelay(1.25f));
+            StartCoroutine(LoadSceneWithDelay(1.5f));
         }
     }
 

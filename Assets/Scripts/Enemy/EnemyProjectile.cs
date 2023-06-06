@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyProjectile : MonoBehaviour
 {
@@ -36,13 +37,14 @@ public class EnemyProjectile : MonoBehaviour
         }
     }
 
+    List<string> tagsToCheck = new List<string> { "Player", "Mushroom", "Radish" };
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Mushroom" || collision.gameObject.tag == "Radish")
+        if (tagsToCheck.Contains(collision.gameObject.tag))
         {
             hit = true;
             boxCollider2D.enabled = false;
-            
+
             collision.gameObject?.GetComponent<PlayerHealth>()?.TakeDamage(1);
             collision.gameObject?.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
             Deactivate(); //when this hits any object deactivate

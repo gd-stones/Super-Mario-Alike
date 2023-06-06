@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
@@ -22,6 +23,7 @@ public class PlayerProjectile : MonoBehaviour
         lifetime = 0;
         gameObject.SetActive(true);
         boxCollider2D.enabled = true;
+        
         if (playerDirection.transform.eulerAngles.y == 0)
             direction = 1;
         else
@@ -40,14 +42,10 @@ public class PlayerProjectile : MonoBehaviour
             Deactivate();
     }
 
+    List<string> tagsToCheck = new List<string> { "Mushroom", "Radish", "Enemy", "Flower", "Snail", "Wall" };
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Mushroom"
-            || collision.gameObject.tag == "Radish"
-            || collision.gameObject.tag == "Enemy"
-            || collision.gameObject.tag == "Flower"
-            || collision.gameObject.tag == "Snail"
-            || collision.gameObject.tag == "Wall")
+        if (tagsToCheck.Contains(collision.gameObject.tag))
         {
             hit = true;
             boxCollider2D.enabled = false;

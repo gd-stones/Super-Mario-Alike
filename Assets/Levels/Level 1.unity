@@ -9233,6 +9233,7 @@ GameObject:
   - component: {fileID: 1011763809}
   - component: {fileID: 1011763812}
   - component: {fileID: 1011763811}
+  - component: {fileID: 1011763813}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -9302,6 +9303,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011763808}
   m_CullTransparentMesh: 1
+--- !u!114 &1011763813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011763808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67d7813419cf4e4ba27c96772669eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreDisplay: {fileID: 1011763811}
 --- !u!1001 &1012542036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16234,6 +16248,10 @@ PrefabInstance:
       objectReference: {fileID: 1490164666}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}

@@ -65,16 +65,6 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, jumpPower / 2);
     }
 
-    //public void JumpOnMobile(float _jumpPower, float jumpTime, float maxJumpTime)
-    //{
-    //    anim.SetTrigger("jump");
-
-    //    if (isGrounded())
-    //        body.velocity = new Vector2(body.velocity.x, _jumpPower);
-    //    else if (jumpTime > maxJumpTime)
-    //        body.velocity = new Vector2(body.velocity.x, _jumpPower / 2);
-    //}
-
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, groundLayer);
@@ -90,4 +80,14 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = 0f;
     }
+
+    //public void JumpOnMobile(float _jumpPower, float jumpTime, float maxJumpTime)
+    //{
+    //    anim.SetTrigger("jump");
+
+    //    if (isGrounded())
+    //        body.velocity = new Vector2(body.velocity.x, _jumpPower);
+    //    else if (jumpTime > maxJumpTime)
+    //        body.velocity = new Vector2(body.velocity.x, _jumpPower / 2);
+    //}
 }

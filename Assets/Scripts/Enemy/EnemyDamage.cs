@@ -12,7 +12,7 @@ public class EnemyDamage : MonoBehaviour
         enemyHeadCoordinateY = transform.position.y + 0.25f;
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "Flower" && collision.gameObject.tag == "Player")
         {
@@ -22,19 +22,21 @@ public class EnemyDamage : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            playerFootCoordinateY = collision.gameObject.GetComponent<Transform>().position.y;
+            playerFootCoordinateY = collision.transform.position.y;
 
             if (playerFootCoordinateY > enemyHeadCoordinateY)
             {
                 gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
                 gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
                 collision.gameObject.GetComponent<PlayerMovement>().JumpOnEnemyHead();
-                
+
                 ScoreCalculator.score += 5;
             }
             else
             {
                 collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+                if (collision.gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
+                    gameObject.GetComponent<EnemyPatrol>().enabled = false;
             }
         }
         else if (collision.gameObject.tag == "Snail")

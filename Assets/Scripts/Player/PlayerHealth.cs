@@ -46,25 +46,24 @@ public class PlayerHealth : MonoBehaviour
             {
                 anim.SetTrigger("hurt");
 
-                //iframes
+                // Iframes
                 StartCoroutine(Invunerability());
                 SoundManager.instance.PlaySound(hurtSound);
             }
             else
             {
-                if (!dead) //player dead
+                if (!dead) // Player dead
                 {
-                    //deactivate all attached component classes
+                    // Deactivate all attached component classes
                     foreach (Behaviour component in components)
-                    {
                         component.enabled = false;
-                    }
 
                     anim.SetBool("isGrounded", true);
                     anim.SetTrigger("hurt");
 
                     dead = true;
                     SoundManager.instance.PlaySound(deathSound);
+                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
             }
         }
@@ -83,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
         anim.Play("Idle");
         StartCoroutine(Invunerability());
 
-        //Activate all attached component classes
+        // Activate all attached component classes
         foreach (Behaviour component in components)
             component.enabled = true;
     }
@@ -93,7 +92,7 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = true;
         Physics2D.IgnoreLayerCollision(10, 11, true);
 
-        //invunerability duration
+        // Invunerability duration
         for (int i = 0; i < numberOfFlashes; i++)
         {
             spriteRend.color = new Color(0.5f, 0.2f, 0.5f, 0.5f);

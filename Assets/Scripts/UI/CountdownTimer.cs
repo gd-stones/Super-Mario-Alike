@@ -25,7 +25,6 @@ public class CountdownTimer : MonoBehaviour
     {
         while (seconds >= 0)
         {
-            Debug.Log(seconds);
             yield return new WaitForSeconds(1f);
             seconds--;
         }
