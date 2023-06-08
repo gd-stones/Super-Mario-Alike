@@ -42,7 +42,7 @@ public class EnemyDamage : MonoBehaviour
                     gameObject.GetComponent<EnemyPatrol>().enabled = false;
             }
         }
-        else if (collision.gameObject.tag == "Snail")
+        else if (collision.gameObject.tag == "Snail" && SnailDamage.isRetractedAndMoving)
         {
             StartCoroutine(MoveUpAndDown());
         }

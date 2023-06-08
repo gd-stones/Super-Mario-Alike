@@ -10,6 +10,7 @@ public class SnailDamage : MonoBehaviour
     private float snailCoordinateX;
 
     public static bool isInShell = false;
+    public static bool isRetractedAndMoving = false;
     private bool hitWall = false;
     private bool playerCollided = false;
 
@@ -46,7 +47,7 @@ public class SnailDamage : MonoBehaviour
         isInShell = true;
         float elapsedTime = 0f;
 
-        while (elapsedTime < 2f)
+        while (elapsedTime < 3f)
         {
             gameObject.GetComponent<EnemyPatrol>().enabled = false;
             gameObject.GetComponent<Animator>().SetTrigger("snail_Hurt");
@@ -72,6 +73,8 @@ public class SnailDamage : MonoBehaviour
 
         while (elapsedTime < 3.5f)
         {
+            isRetractedAndMoving = true;
+
             if (hitWall)
                 direction = -direction;
             hitWall = false;
@@ -84,6 +87,7 @@ public class SnailDamage : MonoBehaviour
             yield return null;
         }
 
+        isRetractedAndMoving = false;
         playerCollided = false;
         gameObject.GetComponent<Animator>().SetBool("snail_Walk", true);
         gameObject.GetComponent<EnemyPatrol>().enabled = true;

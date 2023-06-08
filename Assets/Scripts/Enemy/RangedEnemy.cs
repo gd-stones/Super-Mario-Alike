@@ -35,12 +35,12 @@ public class RangedEnemy : MonoBehaviour
     {
         cooldownTimer += Time.deltaTime;
 
-        //attack only when player in sight?
+        // Attack only when player in sight?
         if (PlayerInSight())
         {
             if (cooldownTimer >= attackCooldown)
             {
-                //attack
+                // Attack
                 cooldownTimer = 0;
                 anim.SetBool("flower_Attack", true);
                 RangedAttack();
@@ -62,7 +62,7 @@ public class RangedEnemy : MonoBehaviour
         SoundManager.instance.PlaySound(fireballSound);
         cooldownTimer = 0;
 
-        //shoot projectile
+        // Shoot projectile
         fireballs[FindFireball()].transform.position = firepoint.position;
         fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }

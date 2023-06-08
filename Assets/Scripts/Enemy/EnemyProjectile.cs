@@ -47,7 +47,7 @@ public class EnemyProjectile : MonoBehaviour
 
             collision.gameObject?.GetComponent<PlayerHealth>()?.TakeDamage(1);
             collision.gameObject?.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
-            Deactivate(); //when this hits any object deactivate
+            Deactivate(); // When this hits any object deactivate
         }
     }
 

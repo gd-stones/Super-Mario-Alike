@@ -13,7 +13,7 @@ public class EnemyPatrol : MonoBehaviour
     private float idleTimer;
 
     [Header("Name condition run")]
-    [SerializeField] private string condition; //radish_Run
+    [SerializeField] private string condition; // radish_Run
     private Animator anim;
 
     private void Start()
