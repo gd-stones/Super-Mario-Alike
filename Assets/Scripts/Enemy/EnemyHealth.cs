@@ -21,6 +21,6 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator TriggerDeactiveAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

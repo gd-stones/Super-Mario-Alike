@@ -1,11 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
-public class EnemyPatrol : MonoBehaviour
+public class RhinocerosMovement : MonoBehaviour
 {
     [Header("Movement parameters")]
     [SerializeField] private float speed;
     private Vector3 initScale;
-    private bool movingLeft = false;
+    private bool movingLeft = true;
     private bool isMoving = true;
 
     [Header("Idle Behaviour")]
@@ -13,16 +14,21 @@ public class EnemyPatrol : MonoBehaviour
     private float idleTimer;
 
     [Header("Name condition run")]
-    [SerializeField] private string condition; //radish_Run
+    [SerializeField] private string condition;
     private Animator anim;
+
+    private Rigidbody2D rb;
+    private float initCoordinatesY;
 
     private void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         initScale = transform.localScale;
+        rb = GetComponent<Rigidbody2D>();
+        initCoordinatesY = transform.localPosition.y;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // 1 <=> movement to the left; -1 <=> movement to the right
         if (movingLeft && isMoving)
@@ -31,6 +37,9 @@ public class EnemyPatrol : MonoBehaviour
             MoveInDirection(-1);
         else
             DirectionChange();
+
+        if ((initCoordinatesY + 0.15f) < transform.localPosition.y)
+            StartCoroutine(MoveUpAndDown());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,7 +67,32 @@ public class EnemyPatrol : MonoBehaviour
 
         // Make transform face direction
         transform.localScale = new Vector3(Mathf.Abs(initScale.x) * direction, initScale.y, initScale.z);
-        transform.position = new Vector3(transform.position.x - Time.deltaTime * direction * speed,
-            transform.position.y, transform.position.z);
+        rb.velocity = new Vector3(Time.fixedDeltaTime * -direction * speed, rb.velocity.y, 0);
+    }
+
+    private IEnumerator MoveUpAndDown()
+    {
+        float duration = 0.35f;
+        float elapsedTime = 0f;
+
+        transform.eulerAngles = new Vector3(0, 0, 180);
+        gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
+
+        while (elapsedTime < duration)
+        {
+            rb.velocity = new Vector3(0, Time.fixedDeltaTime * 100, 0);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        while (transform.position.y > -6)
+        {
+            rb.gravityScale = 20;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            yield return null;
+        }
+
+        gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
     }
 }

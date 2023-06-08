@@ -3,13 +3,15 @@ using System.Collections;
 
 public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] protected float damage;
+    [SerializeField] private float damage;
     private float enemyHeadCoordinateY;
     private float playerFootCoordinateY;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         enemyHeadCoordinateY = transform.position.y + 0.25f;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,6 +37,7 @@ public class EnemyDamage : MonoBehaviour
             else
             {
                 collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+                
                 if (collision.gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
                     gameObject.GetComponent<EnemyPatrol>().enabled = false;
             }
