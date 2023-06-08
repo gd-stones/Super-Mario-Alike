@@ -56,7 +56,7 @@ public class ActiveCoinCollectible : MonoBehaviour
         hasSpawnedCoin = false;
     }
 
-    private IEnumerator MoveBrick()
+    public IEnumerator MoveBrick()
     {
         Vector3 targetPos = transform.position + new Vector3(0, 0.4f, 0);
         
