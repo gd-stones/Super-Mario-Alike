@@ -8,6 +8,8 @@ public class BrickCouldBreak : MonoBehaviour
     private Vector3 brickInitPos;
     public float moveSpeed = 5f;
 
+    private static bool isMoving = false;
+
     private void Start()
     {
         brickFootCoordinateY = transform.position.y - 0.5f;
@@ -20,9 +22,19 @@ public class BrickCouldBreak : MonoBehaviour
         {
             playerHeadCoordinateY = collision.gameObject.GetComponent<Transform>().position.y + 0.5f;
 
-            if (brickFootCoordinateY >= playerHeadCoordinateY)
+            if (brickFootCoordinateY >= playerHeadCoordinateY && !isMoving)
+            {
+                isMoving = true;
                 StartCoroutine(MoveBrick(collision));
+                StartCoroutine(ResetBrickMovement());
+            }
         }
+    }
+
+    private IEnumerator ResetBrickMovement()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isMoving = false;
     }
 
     private IEnumerator MoveBrick(Collision2D collision)
@@ -41,7 +53,11 @@ public class BrickCouldBreak : MonoBehaviour
             yield return null;
         }
 
+        // Break brick if player is scaling
         if (collision.transform.localScale.x > 1)
+        {
+            isMoving = false;
             gameObject.SetActive(false);
+        }
     }
 }
