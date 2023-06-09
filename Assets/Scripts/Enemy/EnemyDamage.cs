@@ -6,12 +6,10 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] private float damage;
     private float enemyHeadCoordinateY;
     private float playerFootCoordinateY;
-    private Rigidbody2D rb;
 
     private void Start()
     {
         enemyHeadCoordinateY = transform.position.y + 0.25f;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +35,7 @@ public class EnemyDamage : MonoBehaviour
             else
             {
                 collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(damage);
-                
+
                 if (collision.gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
                     gameObject.GetComponent<EnemyPatrol>().enabled = false;
             }
@@ -52,10 +50,11 @@ public class EnemyDamage : MonoBehaviour
     {
         float duration = 0.5f;
         float elapsedTime = 0f;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         while (elapsedTime < duration)
         {
-            gameObject.transform.Translate(Vector3.up * 3 * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.up * 4 * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

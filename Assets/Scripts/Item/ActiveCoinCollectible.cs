@@ -52,7 +52,7 @@ public class ActiveCoinCollectible : MonoBehaviour
 
     private IEnumerator ResetCoinSpawn()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         hasSpawnedCoin = false;
     }
 
@@ -93,11 +93,6 @@ public class ActiveCoinCollectible : MonoBehaviour
         {
             coinCollectible.transform.position = Vector3.MoveTowards(coinCollectible.transform.position, (targetPos - new Vector3(0, 0.3f, 0)), Time.deltaTime * moveSpeed);
             yield return null;
-        }
-
-        if (coinCount == maxCoinCount)
-        {
-            coinCollectible.SetActive(false);
         }
 
         coinCollectible.SetActive(false);
