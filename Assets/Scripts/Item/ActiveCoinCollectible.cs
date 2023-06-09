@@ -39,7 +39,6 @@ public class ActiveCoinCollectible : MonoBehaviour
             
             if (brickFootCoordinateY >= playerHeadCoordinateY && !hasSpawnedCoin)
             {
-                SoundManager.instance.PlaySound(itemSound);
                 hasSpawnedCoin = true;
                 coinCount++;
 
@@ -80,6 +79,7 @@ public class ActiveCoinCollectible : MonoBehaviour
         coinCollectible.SetActive(true);
         Vector3 targetPos = coinCollectible.transform.position + new Vector3(0, 2f, 0);
         Quaternion targetRotation = Quaternion.Euler(0f, 180f, 0f);
+        SoundManager.instance.PlaySound(itemSound);
 
         while (coinCollectible.transform.position != targetPos)
         {
