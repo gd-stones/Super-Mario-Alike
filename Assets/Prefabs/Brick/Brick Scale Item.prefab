@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleValue: 1.5
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 1bf2172bd568fbf42b549d33755b1287, type: 3}
   moveSpeed: 4
   active: {fileID: 3730546028839096301}
 --- !u!1 &8469453552323655757
@@ -276,7 +276,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleCollectible: {fileID: 4847984750501928172}
-  moveSpeed: 2
   moveDuration: 3
-  moveSpeedBrick: 5
   headCollision: 0

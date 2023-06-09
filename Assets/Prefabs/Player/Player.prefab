@@ -111,7 +111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -767896891
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -280,3 +280,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpointSound: {fileID: 8300000, guid: 1bf2172bd568fbf42b549d33755b1287, type: 3}
+  respawnSound: {fileID: 8300000, guid: f33e69b01ef92a54eb343ad220e83fde, type: 3}
+  gameoverSound: {fileID: 8300000, guid: 40795fce1e434d6448a5d19ac9b34801, type: 3}

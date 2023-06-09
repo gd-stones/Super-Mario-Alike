@@ -1516,10 +1516,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin Collectible
       objectReference: {fileID: 0}
-    - target: {fileID: 5616692757190753636, guid: 07cb5a22e7d28a74faf3d36f80cbef24, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cb5a22e7d28a74faf3d36f80cbef24, type: 3}
 --- !u!4 &242697661 stripped
@@ -16800,10 +16796,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: End
       objectReference: {fileID: 0}
-    - target: {fileID: 4856047963091893776, guid: be5ef5a5c160d0a488ae70bcc104bb32, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4856047963091893780, guid: be5ef5a5c160d0a488ae70bcc104bb32, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -16994,33 +16986,17 @@ PrefabInstance:
       propertyPath: fireballs.Array.data[19]
       value: 
       objectReference: {fileID: 1490164666}
-    - target: {fileID: 6120223939116601324, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
-      propertyPath: respawnSound
-      value: 
-      objectReference: {fileID: 8300000, guid: f33e69b01ef92a54eb343ad220e83fde, type: 3}
-    - target: {fileID: 6120223939116601324, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
-      propertyPath: gameoverSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 40795fce1e434d6448a5d19ac9b34801, type: 3}
-    - target: {fileID: 6120223939116601324, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
-      propertyPath: respwawnSound
-      value: 
-      objectReference: {fileID: 8300000, guid: f33e69b01ef92a54eb343ad220e83fde, type: 3}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.39
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263204, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17054,17 +17030,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6120223939690263205, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6120223939690263206, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
       propertyPath: m_Name
       value: Ninja Frog
-      objectReference: {fileID: 0}
-    - target: {fileID: 6120223939690263208, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1728ead377e2cb2418a9e2d248ac8d8a, type: 3}
