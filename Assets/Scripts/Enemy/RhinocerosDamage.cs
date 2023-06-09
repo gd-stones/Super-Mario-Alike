@@ -73,20 +73,20 @@ public class RhinocerosDamage : MonoBehaviour
 
     private IEnumerator ActiveGoThroughPlayer()
     {
-            float duration = 1f;
-            float elapsedTime = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
 
-            while (elapsedTime < duration)
-            {
-                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
-                player.GetComponent<BoxCollider2D>().isTrigger = true;
+        while (elapsedTime < duration)
+        {
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+            player.GetComponent<BoxCollider2D>().isTrigger = true;
 
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
 
-            player.GetComponent<BoxCollider2D>().isTrigger = false;
-            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        player.GetComponent<BoxCollider2D>().isTrigger = false;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

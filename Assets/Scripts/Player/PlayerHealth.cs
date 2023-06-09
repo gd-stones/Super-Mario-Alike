@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         {
             transform.localScale = Vector3.one;
             StartCoroutine(Invunerability());
+            SoundManager.instance.PlaySound(hurtSound);
         }
         else
         {
@@ -45,17 +46,14 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth > 0)
             {
                 anim.SetTrigger("hurt");
-
-                // Iframes
-                StartCoroutine(Invunerability());
                 SoundManager.instance.PlaySound(hurtSound);
+                StartCoroutine(Invunerability()); // Iframes
             }
             else
             {
                 if (!dead) // Player dead
                 {
-                    // Deactivate all attached component classes
-                    foreach (Behaviour component in components)
+                    foreach (Behaviour component in components) // Deactivate all attached component classes
                         component.enabled = false;
 
                     anim.SetBool("isGrounded", true);
@@ -82,8 +80,7 @@ public class PlayerHealth : MonoBehaviour
         anim.Play("Idle");
         StartCoroutine(Invunerability());
 
-        // Activate all attached component classes
-        foreach (Behaviour component in components)
+        foreach (Behaviour component in components) // Activate all attached component classes
             component.enabled = true;
     }
 

@@ -5,6 +5,8 @@ using System.Collections;
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private AudioClip checkpointSound;
+    [SerializeField] private AudioClip respawnSound;
+    [SerializeField] private AudioClip gameoverSound;
     private Transform currentCheckpoint; // Store last checkpoint
     private PlayerHealth playerHealth;
 
@@ -24,10 +26,12 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (currentCheckpoint == null) //Check is checkpoint available
         {
+            //SoundManager.instance.PlaySound(gameoverSound);
             StartCoroutine(LoadLoseScene("Lose", 1f));
             return;
         }
 
+        SoundManager.instance.PlaySound(respawnSound);
         transform.position = currentCheckpoint.position; // Move player to checkpoint position
         playerHealth.Respawn(); // Restore player health and reset animation
     }
@@ -44,10 +48,12 @@ public class PlayerRespawn : MonoBehaviour
         }
         else if (collision.transform.tag == "Start")
         {
-            collision.GetComponent<Animator>().SetTrigger("start_Appear");
+            collision.GetComponent<Animator>().SetTrigger("start_Appear"); 
+            SoundManager.instance.PlaySound(checkpointSound);
         }
         else if (collision.transform.tag == "End")
         {
+            SoundManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Animator>().SetTrigger("end_Appear");
             StartCoroutine(LoadSceneWithDelay(1.5f));
         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5616692757190753560}
   - component: {fileID: 5616692757190753639}
   - component: {fileID: 5616692757190753637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coin Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5616692757190753636}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.76, y: -0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueCoin: 50
+  itemSound: {fileID: 8300000, guid: 1bf2172bd568fbf42b549d33755b1287, type: 3}

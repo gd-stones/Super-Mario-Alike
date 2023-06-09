@@ -214,3 +214,4 @@ MonoBehaviour:
   rotationSpeed: 180
   maxCoinCount: 5
   valueCoin: 50
+  itemSound: {fileID: 8300000, guid: 1bf2172bd568fbf42b549d33755b1287, type: 3}

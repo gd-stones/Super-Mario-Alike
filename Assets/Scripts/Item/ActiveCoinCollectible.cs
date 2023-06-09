@@ -18,6 +18,7 @@ public class ActiveCoinCollectible : MonoBehaviour
     public int maxCoinCount = 5;
 
     [SerializeField] private int valueCoin = 50;
+    [SerializeField] private AudioClip itemSound;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class ActiveCoinCollectible : MonoBehaviour
             
             if (brickFootCoordinateY >= playerHeadCoordinateY && !hasSpawnedCoin)
             {
+                SoundManager.instance.PlaySound(itemSound);
                 hasSpawnedCoin = true;
                 coinCount++;
 

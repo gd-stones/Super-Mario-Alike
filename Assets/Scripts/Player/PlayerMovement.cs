@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetTrigger("jump"); 
         SoundManager.instance.PlaySound(jumpSound);
-
+        
         if (isGrounded())
             body.velocity = new Vector2(body.velocity.x, jumpPower);
     }

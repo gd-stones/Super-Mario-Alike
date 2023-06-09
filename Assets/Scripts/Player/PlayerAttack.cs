@@ -21,9 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Q))
-        {
             Attack();
-        }
 #endif
     }
 
@@ -34,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
             SoundManager.instance.PlaySound(fireballSound);
             cooldownTimer = 0;
 
-            //Shoot projectile
+            // Shoot projectile
             fireballs[FindFireball()].transform.position = firepoint.position;
             fireballs[FindFireball()].GetComponent<PlayerProjectile>().ActivateProjectile();
             DataManager.Instance.coin -= 100;
