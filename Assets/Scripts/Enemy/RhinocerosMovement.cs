@@ -38,7 +38,7 @@ public class RhinocerosMovement : MonoBehaviour
         else
             DirectionChange();
 
-        if ((initCoordinatesY + 0.15f) < transform.localPosition.y)
+        if ((initCoordinatesY + 0.2f) < transform.localPosition.y)
             StartCoroutine(MoveUpAndDown());
     }
 

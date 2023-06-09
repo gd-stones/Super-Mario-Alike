@@ -14,14 +14,10 @@ public class SoundManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
-            // Keep this object even when we go to new scene
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Keep this object even when we go to new scene
         }
         else if (instance != null && instance != this) // Destroy duplicate gameobjects
-        {
             Destroy(gameObject);
-        }
 
         // Assign initial volumes
         ChangeMusicVolume(0);
@@ -35,12 +31,12 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeSoundVolume(float _change)
     {
-        ChangeSourceVolume(1, "soundVolume", _change, soundSource);
+        ChangeSourceVolume(1f, "soundVolume", _change, soundSource);
     }
 
     public void ChangeMusicVolume(float _change)
     {
-        ChangeSourceVolume(0.3f, "musicVolume", _change, musicSource);
+        ChangeSourceVolume(0.2f, "musicVolume", _change, musicSource);
     }
 
     private void ChangeSourceVolume(float baseVolume, string volumeName, float change, AudioSource source)
@@ -51,13 +47,9 @@ public class SoundManager : MonoBehaviour
 
         // Check if we reached the maximum or minimum value
         if (currentVolume > 1)
-        {
             currentVolume = 0;
-        }
         else if (currentVolume < 0)
-        {
             currentVolume = 1;
-        }
 
         // Assign final value
         float finalVolume = currentVolume * baseVolume;

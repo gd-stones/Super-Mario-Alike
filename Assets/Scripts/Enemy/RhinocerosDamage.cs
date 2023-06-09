@@ -3,9 +3,8 @@ using System.Collections;
 
 public class RhinocerosDamage : MonoBehaviour
 {
-    private float rhinoHeadCoordinateY;
-    private float playerFootCoordinateY;
     private Rigidbody2D rb;
+    public GameObject player;
 
     private void Start()
     {
@@ -14,10 +13,13 @@ public class RhinocerosDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            rhinoHeadCoordinateY = transform.position.y + 0.2f;
-            playerFootCoordinateY = collision.transform.position.y;
+            float rhinoFootCoordinateY = transform.position.y;
+            float rhinoHeadCoordinateY = transform.position.y + 0.2f;
+
+            float playerFootCoordinateY = collision.transform.position.y;
+            float playerHeadCoordinateY = collision.transform.position.y + 0.6f;
 
             if (playerFootCoordinateY >= rhinoHeadCoordinateY)
             {
@@ -26,9 +28,20 @@ public class RhinocerosDamage : MonoBehaviour
 
                 ScoreCalculator.score += 5;
             }
-            else
+            else if (playerFootCoordinateY >= rhinoFootCoordinateY && playerFootCoordinateY < rhinoHeadCoordinateY)
             {
-                StartCoroutine(ActiveGoThrough());
+                StartCoroutine(ActiveGoThroughRhino());
+                collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(1);
+
+                if (collision.gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
+                {
+                    gameObject.GetComponent<RhinocerosMovement>().enabled = false;
+                    rb.velocity = Vector3.zero;
+                }
+            }
+            else if (playerHeadCoordinateY <= rhinoFootCoordinateY - 0.15f)
+            {
+                StartCoroutine(ActiveGoThroughPlayer());
                 collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(1);
 
                 if (collision.gameObject.GetComponent<PlayerHealth>().currentHealth <= 0)
@@ -40,7 +53,7 @@ public class RhinocerosDamage : MonoBehaviour
         }
     }
 
-    private IEnumerator ActiveGoThrough()
+    private IEnumerator ActiveGoThroughRhino()
     {
         float duration = 3f;
         float elapsedTime = 0f;
@@ -56,5 +69,24 @@ public class RhinocerosDamage : MonoBehaviour
 
         gameObject.GetComponent<CapsuleCollider2D>().isTrigger = false;
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+    }
+
+    private IEnumerator ActiveGoThroughPlayer()
+    {
+            float duration = 1f;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+                player.GetComponent<BoxCollider2D>().isTrigger = true;
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            player.GetComponent<BoxCollider2D>().isTrigger = false;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

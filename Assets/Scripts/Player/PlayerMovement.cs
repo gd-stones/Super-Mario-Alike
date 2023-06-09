@@ -44,8 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
-        // Adjustable jump height
-        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
+        
+        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0) // Adjustable jump height
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
 
         body.gravityScale = 3;
@@ -54,13 +54,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        anim.SetTrigger("jump");
+        anim.SetTrigger("jump"); 
+        SoundManager.instance.PlaySound(jumpSound);
 
         if (isGrounded())
             body.velocity = new Vector2(body.velocity.x, jumpPower);
     }
     public void JumpOnEnemyHead()
     {
+        SoundManager.instance.PlaySound(jumpSound);
         anim.SetTrigger("jump");
         body.velocity = new Vector2(body.velocity.x, jumpPower / 2);
     }

@@ -446,7 +446,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  fireballSound: {fileID: 0}
+  fireballSound: {fileID: 8300000, guid: 221111e852407e440af516996e4b0371, type: 3}
 --- !u!114 &7874328928887542700
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class JumpOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerUp(PointerEventData pointerEventData)
     {
         if (playerMovement.body.velocity.y > 0)
-            playerMovement.body.velocity = new Vector2(playerMovement.body.velocity.x, playerMovement.body.velocity.y / 3);
+            playerMovement.body.velocity = new Vector2(playerMovement.body.velocity.x, playerMovement.body.velocity.y / 2);
     }
 
     // ------------------------------------------------------- Workaround 1 ---------------------------------------------------
