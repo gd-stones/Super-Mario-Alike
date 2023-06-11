@@ -20,12 +20,18 @@ public class ActiveCoinCollectible : MonoBehaviour
     [SerializeField] private int valueCoin = 50;
     [SerializeField] private AudioClip itemSound;
 
+    // Change sprite when empty coin
+    private SpriteRenderer spriteR;
+    public Sprite coinHollowBrick;
+
     private void Start()
     {
         brickFootCoordinateY = transform.position.y - 0.5f;
         brickInitPos = transform.position;
         coinInitPos = coinCollectible.transform.position;
         coinInitRotation = coinCollectible.transform.rotation;
+
+        spriteR = GetComponent<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,7 +42,7 @@ public class ActiveCoinCollectible : MonoBehaviour
                 return;
 
             playerHeadCoordinateY = collision.gameObject.GetComponent<Transform>().position.y + 0.5f;
-            
+
             if (brickFootCoordinateY >= playerHeadCoordinateY && !hasSpawnedCoin)
             {
                 hasSpawnedCoin = true;
@@ -47,6 +53,9 @@ public class ActiveCoinCollectible : MonoBehaviour
                 StartCoroutine(MoveCoin());
 
                 ScoreCalculator.score += 5;
+
+                if (coinCount == 5)
+                    spriteR.sprite = coinHollowBrick;
             }
         }
     }
@@ -60,7 +69,7 @@ public class ActiveCoinCollectible : MonoBehaviour
     public IEnumerator MoveBrick()
     {
         Vector3 targetPos = transform.position + new Vector3(0, 0.4f, 0);
-        
+
         while (transform.position != targetPos)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
@@ -73,7 +82,7 @@ public class ActiveCoinCollectible : MonoBehaviour
             yield return null;
         }
     }
-    
+
     private IEnumerator MoveCoin()
     {
         coinCollectible.SetActive(true);
@@ -85,7 +94,7 @@ public class ActiveCoinCollectible : MonoBehaviour
         {
             coinCollectible.transform.position = Vector3.MoveTowards(coinCollectible.transform.position, targetPos, Time.deltaTime * moveSpeed);
             coinCollectible.transform.rotation = Quaternion.RotateTowards(coinCollectible.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            
+
             yield return null;
         }
 
