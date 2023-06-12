@@ -24,9 +24,8 @@ public class PlayerRespawn : MonoBehaviour
 
     private void CheckRespawn()
     {
-        if (currentCheckpoint == null) //Check is checkpoint available
+        if (currentCheckpoint == null) // Check is checkpoint available
         {
-            //SoundManager.instance.PlaySound(gameoverSound);
             StartCoroutine(LoadLoseScene("Lose", 1f));
             return;
         }
