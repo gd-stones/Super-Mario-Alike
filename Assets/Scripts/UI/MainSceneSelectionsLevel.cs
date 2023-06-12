@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour, IPointerDownHandler
+public class MainSceneSelectionsLevel : MonoBehaviour, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("LevelSelection");
     }
 }

@@ -8,6 +8,6 @@ public class SelectionCharacter : MonoBehaviour
     public void ChooseCharacter()
     {
         PlayerPrefs.SetInt("characterId", characterId);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelection");
     } 
 }
