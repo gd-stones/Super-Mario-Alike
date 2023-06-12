@@ -4,7 +4,6 @@ using UnityEngine;
 public class ActiveScaleCollectible : MonoBehaviour
 {
     [SerializeField] private GameObject scaleCollectible;
-    [SerializeField] private float moveDuration = 5f;
     private float brickFootCoordinateY;
     private float playerHeadCoordinateY;
 

@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip hurtSound;
 
+    public string nameIdleAnim;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -77,7 +79,8 @@ public class PlayerHealth : MonoBehaviour
         dead = false;
         AddHealth(startingHealth);
         anim.ResetTrigger("hurt");
-        anim.Play("Idle");
+        //anim.Play("Idle");
+        anim.Play(nameIdleAnim);
         StartCoroutine(Invunerability());
 
         foreach (Behaviour component in components) // Activate all attached component classes

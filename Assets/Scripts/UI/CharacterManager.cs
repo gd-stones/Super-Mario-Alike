@@ -2,35 +2,26 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    private int characterId;
-    private int characterIdActive;
     public GameObject[] characters;
-    private GameObject characterActive;
+    internal GameObject characterActive;
 
-    private void Start()
+    private void Awake()
     {
-        characterIdActive = PlayerPrefs.GetInt("characterId");
-    }
-
-    private void Update()
-    {
-        if (characterActive != null)
-        {
-            return;
-        }
         ActiveCharacter();
     }
 
     private void ActiveCharacter()
     {
+        int characterIdActive = PlayerPrefs.GetInt("characterId");
+
         foreach (var character in characters)
         {
-            characterId = character.GetComponent<SelectionCharacter>().characterId;
+            int characterId = character.GetComponent<SelectionCharacter>().characterId;
             if (characterId == characterIdActive)
             {
                 character.SetActive(true);
                 characterActive = character;
-            }    
+            }
         }
     }
 }

@@ -4,7 +4,13 @@ using UnityEngine.EventSystems;
 public class JumpOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     // ------------------------------------------------------- Workaround 2 ---------------------------------------------------
-    [SerializeField] private PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
+    public GameObject characterManager;
+
+    private void Start()
+    {
+        playerMovement = characterManager.GetComponent<CharacterManager>().characterActive.GetComponent<PlayerMovement>();
+    }
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {

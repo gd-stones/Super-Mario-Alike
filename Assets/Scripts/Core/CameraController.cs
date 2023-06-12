@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    public GameObject characterManager;
+    private Transform player;
     [SerializeField] private float aheadDistance;
     [SerializeField] private float cameraSpeed;
     private float lookAhead;
+
+    private void Start()
+    {
+        player = characterManager.GetComponent<CharacterManager>().characterActive.GetComponent<Transform>();
+    }
 
     private void Update()
     {

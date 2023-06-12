@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
 
-    public Rigidbody2D body;
+    internal Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
     private float horizontalInput;
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
-        
+
         if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0) // Adjustable jump height
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
 
@@ -54,12 +54,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        anim.SetTrigger("jump"); 
+        anim.SetTrigger("jump");
         SoundManager.instance.PlaySound(jumpSound);
-        
+
         if (isGrounded())
             body.velocity = new Vector2(body.velocity.x, jumpPower);
     }
+
     public void JumpOnEnemyHead()
     {
         SoundManager.instance.PlaySound(jumpSound);
@@ -69,19 +70,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.2f, groundLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
 
-    public void ChangeDirection(float value)
-    {
-        horizontalInput = value;
-    }
+    public void ChangeDirection(float value) => horizontalInput = value;
 
-    public void ResetDirection()
-    {
-        horizontalInput = 0f;
-    }
+    public void ResetDirection() => horizontalInput = 0f;
 
     //public void JumpOnMobile(float _jumpPower, float jumpTime, float maxJumpTime)
     //{

@@ -47,7 +47,7 @@ public class PlayerRespawn : MonoBehaviour
         }
         else if (collision.transform.tag == "Start")
         {
-            collision.GetComponent<Animator>().SetTrigger("start_Appear"); 
+            collision.GetComponent<Animator>().SetTrigger("start_Appear");
             SoundManager.instance.PlaySound(checkpointSound);
         }
         else if (collision.transform.tag == "End")

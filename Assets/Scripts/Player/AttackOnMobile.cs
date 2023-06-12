@@ -3,7 +3,13 @@ using UnityEngine.EventSystems;
 
 public class AttackOnMobile : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] private PlayerAttack attackOnMobile;
+    public GameObject characterManager;
+    private PlayerAttack attackOnMobile;
+
+    private void Start()
+    {
+        attackOnMobile = characterManager.GetComponent<CharacterManager>().characterActive.GetComponent<PlayerAttack>();
+    }
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {

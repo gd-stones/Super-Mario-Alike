@@ -5,16 +5,19 @@ public class PlayerProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
-    [SerializeField] private GameObject playerDirection;
+    
+    public GameObject characterManager;
+    private GameObject playerDirection;
     private int direction;
     private float lifetime;
 
-    private BoxCollider2D boxCollider2D;
+    private CircleCollider2D circleCol;
     private bool hit;
 
     private void Awake()
     {
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        circleCol = gameObject.GetComponent<CircleCollider2D>();
+        playerDirection = characterManager.GetComponent<CharacterManager>().characterActive;
     }
 
     public void ActivateProjectile()
@@ -22,8 +25,8 @@ public class PlayerProjectile : MonoBehaviour
         hit = false;
         lifetime = 0;
         gameObject.SetActive(true);
-        boxCollider2D.enabled = true;
-        
+        circleCol.enabled = true;
+
         if (playerDirection.transform.eulerAngles.y == 0)
             direction = 1;
         else
@@ -48,15 +51,12 @@ public class PlayerProjectile : MonoBehaviour
         if (tagsToCheck.Contains(collision.gameObject.tag))
         {
             hit = true;
-            boxCollider2D.enabled = false;
+            circleCol.enabled = false;
 
             collision.gameObject?.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
             Deactivate();
         }
     }
 
-    private void Deactivate()
-    {
-        gameObject.SetActive(false);
-    }
+    private void Deactivate() => gameObject.SetActive(false);
 }

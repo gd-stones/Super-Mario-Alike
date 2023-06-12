@@ -4,8 +4,15 @@ using UnityEngine.EventSystems;
 public class MoveOnMobile : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private int direction;
-    [SerializeField] private PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
     private float inputOnMobile = 0;
+
+    public GameObject characterManager;
+
+    private void Start()
+    {
+        playerMovement = characterManager.GetComponent<CharacterManager>().characterActive.GetComponent<PlayerMovement>();
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
