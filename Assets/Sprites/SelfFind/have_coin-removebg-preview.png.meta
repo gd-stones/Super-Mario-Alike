@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4acb7f2a5583f874699f2c459187efee
+guid: 6909849679ecd9648858a79de2229783
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,15 +113,27 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: empty_coin-removebg-preview_0
+      name: have_coin-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 14
+        x: 18
+        y: 18
         width: 124
         height: 124
       alignment: 0
@@ -131,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a8428c384523440b1536b3068ed7c5
-      internalID: 32802040
+      spriteID: 9adde85035ce6824c8621e9aca26183a
+      internalID: -1866094922
       vertices: []
       indices: 
       edges: []
@@ -148,7 +160,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      empty_coin-removebg-preview_0: 32802040
+      have_coin-removebg-preview_0: -1866094922
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
