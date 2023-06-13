@@ -58,5 +58,17 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            hit = true;
+            circleCol.enabled = false;
+
+            collision.gameObject?.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
+            Deactivate();
+        }
+    }
+
     private void Deactivate() => gameObject.SetActive(false);
 }

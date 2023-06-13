@@ -54,7 +54,7 @@ public class PlayerRespawn : MonoBehaviour
         {
             SoundManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Animator>().SetTrigger("end_Appear");
-            StartCoroutine(LoadSceneWithDelay(1.5f));
+            StartCoroutine(LoadSceneWithDelay(1f));
         }
     }
 

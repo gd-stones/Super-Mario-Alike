@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDisplay: {fileID: 98572710}
-  seconds: 180
 --- !u!114 &98572710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6604,6 +6603,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2359791968744271661, guid: 037e52dd5ea04f54e8e43e5935791c1d, type: 3}
   m_PrefabInstance: {fileID: 2359791966856561409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &274259185
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1018112891}
+    m_Modifications:
+    - target: {fileID: 4847598901445731622, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_Name
+      value: Corner (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.11360741
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+--- !u!4 &274259186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4847598901445731623, guid: 9ad356d69717012448e95b81ad608c82, type: 3}
+  m_PrefabInstance: {fileID: 274259185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &284231908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7330,6 +7391,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 906560940, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_Name
       value: Enemy Snail (2)
@@ -8119,6 +8184,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom (3)
@@ -8437,6 +8506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Flower
       objectReference: {fileID: 0}
+    - target: {fileID: 7874328928887542706, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
 --- !u!4 &1013762048 stripped
@@ -8478,6 +8551,7 @@ Transform:
   - {fileID: 1879856202}
   - {fileID: 2109146438}
   - {fileID: 116037325}
+  - {fileID: 274259186}
   m_Father: {fileID: 325803384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8612,6 +8686,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom (4)
@@ -9612,6 +9690,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish (4)
@@ -10003,6 +10085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Flower (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7874328928887542706, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
 --- !u!4 &1502904339 stripped
@@ -10017,6 +10103,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish (3)
@@ -13215,6 +13305,10 @@ PrefabInstance:
       propertyPath: movementDistance
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom
@@ -13272,6 +13366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 879142792, guid: b15c93e41795cbb499b294a8b297d658, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1218128661197468483, guid: b15c93e41795cbb499b294a8b297d658, type: 3}
       propertyPath: m_Name
       value: Enemy Blue Bird
@@ -13451,6 +13549,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 906560940, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_Name
       value: Enemy Snail
@@ -13569,6 +13671,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish

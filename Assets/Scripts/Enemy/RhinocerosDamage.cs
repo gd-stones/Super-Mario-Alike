@@ -6,10 +6,7 @@ public class RhinocerosDamage : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject player;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    private void Start() => rb = GetComponent<Rigidbody2D>();
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -53,6 +50,12 @@ public class RhinocerosDamage : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Snail" && SnailDamage.isRetractedAndMoving)
+            StartCoroutine(MoveUpAndDown());
+    }
+
     private IEnumerator ActiveGoThroughRhino()
     {
         float duration = 3f;
@@ -88,5 +91,30 @@ public class RhinocerosDamage : MonoBehaviour
         player.GetComponent<BoxCollider2D>().isTrigger = false;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private IEnumerator MoveUpAndDown()
+    {
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+
+        while (elapsedTime < duration)
+        {
+            gameObject.transform.Translate(Vector3.up * 4 * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            gameObject.transform.Translate(Vector3.down * 6 * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        gameObject.GetComponent<EnemyHealth>()?.EnemyTakeDamage();
     }
 }

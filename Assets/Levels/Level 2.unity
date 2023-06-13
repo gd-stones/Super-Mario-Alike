@@ -7197,6 +7197,10 @@ PrefabInstance:
       propertyPath: movementDistance
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 906560940, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_Name
       value: Enemy Snail (2)
@@ -7588,6 +7592,10 @@ PrefabInstance:
     - target: {fileID: 906560930, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: movementDistance
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 906560940, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_Name
@@ -8438,6 +8446,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish (2)
@@ -8876,6 +8888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom (3)
@@ -10086,6 +10102,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom (4)
@@ -10951,7 +10971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDisplay: {fileID: 1326224808}
-  seconds: 180
 --- !u!114 &1326224808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11304,6 +11323,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish (4)
@@ -12065,6 +12088,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish (3)
@@ -12520,6 +12547,10 @@ PrefabInstance:
       propertyPath: movementDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom (2)
@@ -12931,6 +12962,10 @@ PrefabInstance:
     - target: {fileID: 7874328928887542697, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
       propertyPath: m_Name
       value: Enemy Flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874328928887542706, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b093b7384d137146ac3cacd4341c3cc, type: 3}
@@ -13666,6 +13701,10 @@ PrefabInstance:
       propertyPath: movementDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13584935, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 920517378188713747, guid: 4df2c6524176a81498aadafae0c5b899, type: 3}
       propertyPath: m_Name
       value: Enemy Mushroom
@@ -13723,6 +13762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 879142792, guid: b15c93e41795cbb499b294a8b297d658, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1218128661197468483, guid: b15c93e41795cbb499b294a8b297d658, type: 3}
       propertyPath: m_Name
       value: Enemy Blue Bird
@@ -13906,6 +13949,10 @@ PrefabInstance:
       propertyPath: movementDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 906560940, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6031109200295834518, guid: a966748268720ae4eb32d2ac5a026dd8, type: 3}
       propertyPath: m_Name
       value: Enemy Snail
@@ -14020,6 +14067,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326362155}
     m_Modifications:
+    - target: {fileID: 193193146, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
+      propertyPath: delayTimeDeactive
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7558132589854984921, guid: 522e5720870d99d47bdb70565a2700c8, type: 3}
       propertyPath: m_Name
       value: Enemy Radish

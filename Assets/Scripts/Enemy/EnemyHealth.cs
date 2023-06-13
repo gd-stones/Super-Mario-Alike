@@ -5,7 +5,7 @@ public class EnemyHealth : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] private string nameConditionHurt;
-    [SerializeField] private float delayTimeDeactive;
+    [SerializeField] private float delayTimeDeactive = 0.5f;
 
     private void Start()
     {
