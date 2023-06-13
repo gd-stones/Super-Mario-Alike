@@ -12,7 +12,7 @@ public class CharacterManager : MonoBehaviour
 
     private void ActiveCharacter()
     {
-        int characterIdActive = PlayerPrefs.GetInt("characterId");
+        int characterIdActive = PlayerPrefs.GetInt("characterId", 1);
 
         foreach (var character in characters)
         {
