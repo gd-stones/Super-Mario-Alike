@@ -11,6 +11,7 @@ public class SelectionsLevel : MonoBehaviour
 
     public void OpenScene()
     {
+        ScoreCalculator.score = 0;
         Time.timeScale = 1f;
         SceneManager.LoadScene("Level " + level.ToString());
     }

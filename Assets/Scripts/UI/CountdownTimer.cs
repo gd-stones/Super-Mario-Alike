@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class CountdownTimer : MonoBehaviour
 {
     public Text levelDisplay;
-    public int seconds = 180;
+    private int seconds = 300;
 
     private void Start()
     {
-        StartCoroutine(Countdown());
+        StartCoroutine(Countdown()); 
     }
 
     private void Update()
@@ -21,7 +21,7 @@ public class CountdownTimer : MonoBehaviour
             SceneManager.LoadScene("Lose");
     }
 
-    private IEnumerator Countdown()
+    public IEnumerator Countdown()
     {
         while (seconds >= 0)
         {

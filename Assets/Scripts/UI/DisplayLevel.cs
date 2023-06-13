@@ -6,8 +6,5 @@ public class DisplayLevel : MonoBehaviour
 {
     public Text levelDisplay;
 
-    private void Start()
-    {
-        levelDisplay.text = SceneManager.GetActiveScene().buildIndex.ToString();
-    }
+    private void Start() => levelDisplay.text = SceneManager.GetActiveScene().buildIndex.ToString();
 }
