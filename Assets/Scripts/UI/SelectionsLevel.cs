@@ -5,13 +5,13 @@ public class SelectionsLevel : MonoBehaviour
 {
     public int level;
 
-    // Start is called before the first frame update
     void Start()
     {
     }
 
     public void OpenScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Level " + level.ToString());
     }
 }
